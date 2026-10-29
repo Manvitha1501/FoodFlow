@@ -1,0 +1,53 @@
+﻿import joblib, numpy as np
+from sklearn.metrics import (accuracy_score, precision_score, recall_score,
+                             f1_score, roc_auc_score, balanced_accuracy_score,
+                             matthews_corrcoef)
+
+model  = joblib.load("artifacts/donation_success_model_tuned.pkl")
+X_test = joblib.load("artifacts/X_test.pkl")
+y_test = joblib.load("artifacts/y_test.pkl")
+
+y_proba = model.predict_proba(X_test)[:, 1]
+y_pred  = (y_proba >= 0.48).astype(int)
+
+acc      = accuracy_score(y_test, y_pred)
+bal_acc  = balanced_accuracy_score(y_test, y_pred)
+roc      = roc_auc_score(y_test, y_proba)
+mcc      = matthews_corrcoef(y_test, y_pred)
+prec_s   = precision_score(y_test, y_pred, pos_label=1)
+rec_s    = recall_score(y_test, y_pred, pos_label=1)
+f1_s     = f1_score(y_test, y_pred, pos_label=1)
+prec_f   = precision_score(y_test, y_pred, pos_label=0, zero_division=0)
+rec_f    = recall_score(y_test, y_pred, pos_label=0, zero_division=0)
+f1_f     = f1_score(y_test, y_pred, pos_label=0, zero_division=0)
+f1_mac   = f1_score(y_test, y_pred, average="macro", zero_division=0)
+f1_wt    = f1_score(y_test, y_pred, average="weighted", zero_division=0)
+
+y_naive  = np.ones(len(y_test), dtype=int)
+naive_acc = accuracy_score(y_test, y_naive)
+
+print("Test set :", len(y_test), "samples |", (y_test==1).sum(), "Success /", (y_test==0).sum(), "Failure")
+print()
+print("--- Overall ---")
+print(f"Accuracy       : {acc*100:.2f}%")
+print(f"Balanced Acc   : {bal_acc*100:.2f}%")
+print(f"ROC-AUC        : {roc*100:.2f}%")
+print(f"MCC            : {mcc:.4f}")
+print()
+print("--- Success Class (1) ---")
+print(f"Precision      : {prec_s*100:.2f}%")
+print(f"Recall         : {rec_s*100:.2f}%")
+print(f"F1 Score       : {f1_s*100:.2f}%")
+print()
+print("--- Failure Class (0) ---")
+print(f"Precision      : {prec_f*100:.2f}%")
+print(f"Recall         : {rec_f*100:.2f}%")
+print(f"F1 Score       : {f1_f*100:.2f}%")
+print()
+print("--- Averages ---")
+print(f"Macro F1       : {f1_mac*100:.2f}%")
+print(f"Weighted F1    : {f1_wt*100:.2f}%")
+print()
+print("--- Naive Baseline (always predict Success) ---")
+print(f"Naive Accuracy : {naive_acc*100:.2f}%")
+print(f"Model vs naive : {(acc - naive_acc)*100:+.2f}pp")

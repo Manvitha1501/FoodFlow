@@ -1,0 +1,50 @@
+[
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3d03"
+    },
+    "userId": "60c72b2f9b1d8b2bad7f3c03",
+    "ngoName": "Feed The Hungry Foundation",
+    "address": "450 Care Lane, Sector 6, New Delhi",
+    "coordinates": {
+      "latitude": 28.5355,
+      "longitude": 77.3910
+    },
+    "capacity": 500,
+    "storageType": "COLD",
+    "trustScore": 4.8,
+    "beneficiariesServed": 6200,
+    "verificationStatus": "APPROVED",
+    "createdAt": {
+      "$date": "2026-07-18T12:30:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T12:30:00Z"
+    },
+    "_class": "com.foodflow.document.NgoProfileDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3d04"
+    },
+    "userId": "60c72b2f9b1d8b2bad7f3c05",
+    "ngoName": "New Hope NGO",
+    "address": "33 Help Circle, New Delhi",
+    "coordinates": {
+      "latitude": 28.5900,
+      "longitude": 77.2200
+    },
+    "capacity": 200,
+    "storageType": "DRY",
+    "trustScore": 5.0,
+    "beneficiariesServed": 0,
+    "verificationStatus": "PENDING",
+    "createdAt": {
+      "$date": "2026-07-18T13:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T13:00:00Z"
+    },
+    "_class": "com.foodflow.document.NgoProfileDocument"
+  }
+]

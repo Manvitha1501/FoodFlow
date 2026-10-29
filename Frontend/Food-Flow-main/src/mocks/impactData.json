@@ -1,0 +1,47 @@
+{
+  "kpis": {
+    "foodSavedKg": 42850,
+    "mealsDelivered": 107125,
+    "co2ReductionTons": 107.1,
+    "successRate": 96.4,
+    "activePartners": 48,
+    "ngosSupported": 32
+  },
+  "dailyTrend": [
+    { "date": "Jul 24", "foodKg": 1240, "meals": 3100, "co2": 3.1 },
+    { "date": "Jul 25", "foodKg": 1580, "meals": 3950, "co2": 3.95 },
+    { "date": "Jul 26", "foodKg": 1100, "meals": 2750, "co2": 2.75 },
+    { "date": "Jul 27", "foodKg": 1890, "meals": 4725, "co2": 4.72 },
+    { "date": "Jul 28", "foodKg": 2150, "meals": 5375, "co2": 5.37 },
+    { "date": "Jul 29", "foodKg": 1940, "meals": 4850, "co2": 4.85 },
+    { "date": "Jul 30", "foodKg": 2310, "meals": 5775, "co2": 5.77 }
+  ],
+  "monthlyTrend": [
+    { "month": "Jan", "foodKg": 4800, "co2Tons": 12.0 },
+    { "month": "Feb", "foodKg": 5600, "co2Tons": 14.0 },
+    { "month": "Mar", "foodKg": 6400, "co2Tons": 16.0 },
+    { "month": "Apr", "foodKg": 7200, "co2Tons": 18.0 },
+    { "month": "May", "foodKg": 8900, "co2Tons": 22.25 },
+    { "month": "Jun", "foodKg": 9950, "co2Tons": 24.87 }
+  ],
+  "donorLeaderboard": [
+    { "rank": 1, "name": "Grand Horizon Buffet & Hotels", "foodSavedKg": 8450, "meals": 21125, "co2Tons": 21.1 },
+    { "rank": 2, "name": "Metropolitan Convention Center", "foodSavedKg": 6800, "meals": 17000, "co2Tons": 17.0 },
+    { "rank": 3, "name": "Fresh Market Superstores Network", "foodSavedKg": 5200, "meals": 13000, "co2Tons": 13.0 },
+    { "rank": 4, "name": "Green Garden Organic Bakery", "foodSavedKg": 3900, "meals": 9750, "co2Tons": 9.75 },
+    { "rank": 5, "name": "University Campus Dining Services", "foodSavedKg": 3150, "meals": 7875, "co2Tons": 7.87 }
+  ],
+  "ngoLeaderboard": [
+    { "rank": 1, "name": "Metropolitan Food Rescuers", "mealsReceived": 38400, "peopleServed": 15200, "co2Impact": 38.4 },
+    { "rank": 2, "name": "Hope Kitchen Community Shelter", "mealsReceived": 28900, "peopleServed": 11500, "co2Impact": 28.9 },
+    { "rank": 3, "name": "Sunrise Elderly Care Meal Program", "mealsReceived": 18200, "peopleServed": 7200, "co2Impact": 18.2 },
+    { "rank": 4, "name": "St. Jude Youth & Family Foundation", "mealsReceived": 12400, "peopleServed": 4900, "co2Impact": 12.4 },
+    { "rank": 5, "name": "Harbor Outreach Center", "mealsReceived": 9200, "peopleServed": 3600, "co2Impact": 9.2 }
+  ],
+  "categoryBreakdown": [
+    { "category": "Prepared Hot Meals", "value": 45, "color": "#10B981" },
+    { "category": "Fresh Bakery Goods", "value": 25, "color": "#F59E0B" },
+    { "category": "Fresh Produce & Fruits", "value": 18, "color": "#06B6D4" },
+    { "category": "Dairy & Chilled Goods", "value": 12, "color": "#8B5CF6" }
+  ]
+}

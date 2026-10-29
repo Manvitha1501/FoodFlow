@@ -1,0 +1,229 @@
+[
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3e01"
+    },
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "foodName": "Paneer Butter Masala (Draft)",
+    "foodCategory": "VEG",
+    "foodDescription": "Creamy rich cottage cheese curry",
+    "foodType": "COOKED",
+    "quantity": 10.0,
+    "quantityUnit": "servings",
+    "status": "DRAFT",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2026-07-19T10:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-19T10:00:00Z"
+    },
+    "_class": "com.foodflow.document.DonationDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3e02"
+    },
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "foodName": "Veg Biryani (Published)",
+    "foodCategory": "VEG",
+    "foodDescription": "Flavorful spiced rice with vegetables",
+    "foodType": "COOKED",
+    "quantity": 25.0,
+    "quantityUnit": "servings",
+    "preparedTime": {
+      "$date": "2026-07-19T11:00:00Z"
+    },
+    "expiryTime": {
+      "$date": "2026-07-19T18:00:00Z"
+    },
+    "storageCondition": "REFRIGERATED",
+    "packagingType": "CONTAINER",
+    "foodTemperature": "Cool",
+    "pickupAddress": "120 Eco Avenue, New Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "pincode": "110001",
+    "coordinates": {
+      "latitude": 28.6139,
+      "longitude": 77.2090
+    },
+    "foodImages": [
+      "https://cloudinary.com/foodflow/veg_biryani.jpg"
+    ],
+    "specialInstructions": "Handle with care.",
+    "status": "PUBLISHED",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2026-07-19T11:15:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-19T11:15:00Z"
+    },
+    "_class": "com.foodflow.document.DonationDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3e03"
+    },
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "foodName": "Chicken Fried Rice (Reserved)",
+    "foodCategory": "NON-VEG",
+    "foodDescription": "Stir-fried rice with chicken and egg",
+    "foodType": "COOKED",
+    "quantity": 15.0,
+    "quantityUnit": "servings",
+    "preparedTime": {
+      "$date": "2026-07-19T12:00:00Z"
+    },
+    "expiryTime": {
+      "$date": "2026-07-19T19:00:00Z"
+    },
+    "storageCondition": "ROOM_TEMPERATURE",
+    "packagingType": "BOX",
+    "foodTemperature": "Warm",
+    "pickupAddress": "120 Eco Avenue, New Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "pincode": "110001",
+    "coordinates": {
+      "latitude": 28.6139,
+      "longitude": 77.2090
+    },
+    "foodImages": [
+      "https://cloudinary.com/foodflow/chicken_rice.jpg"
+    ],
+    "status": "RESERVED",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2026-07-19T12:10:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-19T12:30:00Z"
+    },
+    "_class": "com.foodflow.document.DonationDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3e04"
+    },
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "foodName": "Dal Makhani (Completed)",
+    "foodCategory": "VEG",
+    "foodDescription": "Slow cooked black lentils with cream",
+    "foodType": "COOKED",
+    "quantity": 30.0,
+    "quantityUnit": "servings",
+    "preparedTime": {
+      "$date": "2026-07-19T09:00:00Z"
+    },
+    "expiryTime": {
+      "$date": "2026-07-19T16:00:00Z"
+    },
+    "storageCondition": "REFRIGERATED",
+    "packagingType": "CONTAINER",
+    "foodTemperature": "Cool",
+    "pickupAddress": "120 Eco Avenue, New Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "pincode": "110001",
+    "coordinates": {
+      "latitude": 28.6139,
+      "longitude": 77.2090
+    },
+    "foodImages": [
+      "https://cloudinary.com/foodflow/dal_makhani.jpg"
+    ],
+    "status": "COMPLETED",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2026-07-19T09:10:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-19T15:00:00Z"
+    },
+    "_class": "com.foodflow.document.DonationDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3e05"
+    },
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "foodName": "Mixed Veg Curry (Cancelled)",
+    "foodCategory": "VEG",
+    "foodDescription": "Fresh vegetables simmered in gravy",
+    "foodType": "COOKED",
+    "quantity": 8.0,
+    "quantityUnit": "servings",
+    "preparedTime": {
+      "$date": "2026-07-19T08:00:00Z"
+    },
+    "expiryTime": {
+      "$date": "2026-07-19T15:00:00Z"
+    },
+    "storageCondition": "REFRIGERATED",
+    "packagingType": "CONTAINER",
+    "foodTemperature": "Cool",
+    "pickupAddress": "120 Eco Avenue, New Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "pincode": "110001",
+    "coordinates": {
+      "latitude": 28.6139,
+      "longitude": 77.2090
+    },
+    "foodImages": [
+      "https://cloudinary.com/foodflow/mix_veg.jpg"
+    ],
+    "status": "CANCELLED",
+    "isActive": false,
+    "createdAt": {
+      "$date": "2026-07-19T08:15:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-19T08:45:00Z"
+    },
+    "_class": "com.foodflow.document.DonationDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3e06"
+    },
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "foodName": "Chana Masala (Completed & Soft-Deleted)",
+    "foodCategory": "VEG",
+    "foodDescription": "Chickpea curry with spices",
+    "foodType": "COOKED",
+    "quantity": 20.0,
+    "quantityUnit": "servings",
+    "preparedTime": {
+      "$date": "2026-07-19T07:00:00Z"
+    },
+    "expiryTime": {
+      "$date": "2026-07-19T14:00:00Z"
+    },
+    "storageCondition": "ROOM_TEMPERATURE",
+    "packagingType": "CONTAINER",
+    "foodTemperature": "Warm",
+    "pickupAddress": "120 Eco Avenue, New Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "pincode": "110001",
+    "coordinates": {
+      "latitude": 28.6139,
+      "longitude": 77.2090
+    },
+    "foodImages": [
+      "https://cloudinary.com/foodflow/chana_masala.jpg"
+    ],
+    "status": "COMPLETED",
+    "isActive": false,
+    "createdAt": {
+      "$date": "2026-07-19T07:15:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-19T10:00:00Z"
+    },
+    "_class": "com.foodflow.document.DonationDocument"
+  }
+]

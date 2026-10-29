@@ -1,0 +1,92 @@
+[
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3c01"
+    },
+    "fullName": "System Admin",
+    "email": "admin@foodflow.com",
+    "password": "$2a$10$j3E.2F84v.oV6oPzD1eRe.R3s8d9x1U5H5u4t.91sD/1.c9v.r3wS",
+    "phoneNumber": "+1234567890",
+    "role": "ADMIN",
+    "accountStatus": "ACTIVE",
+    "createdAt": {
+      "$date": "2026-07-18T12:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T12:00:00Z"
+    },
+    "_class": "com.foodflow.document.UserDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3c02"
+    },
+    "fullName": "Alice Green",
+    "email": "owner@greenbistro.com",
+    "password": "$2a$10$j3E.2F84v.oV6oPzD1eRe.R3s8d9x1U5H5u4t.91sD/1.c9v.r3wS",
+    "phoneNumber": "+19876543210",
+    "role": "RESTAURANT",
+    "accountStatus": "ACTIVE",
+    "createdAt": {
+      "$date": "2026-07-18T12:15:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T12:15:00Z"
+    },
+    "_class": "com.foodflow.document.UserDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3c03"
+    },
+    "fullName": "Bob Charity",
+    "email": "logistics@ngohelper.org",
+    "password": "$2a$10$j3E.2F84v.oV6oPzD1eRe.R3s8d9x1U5H5u4t.91sD/1.c9v.r3wS",
+    "phoneNumber": "+15556667777",
+    "role": "NGO",
+    "accountStatus": "ACTIVE",
+    "createdAt": {
+      "$date": "2026-07-18T12:30:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T12:30:00Z"
+    },
+    "_class": "com.foodflow.document.UserDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3c04"
+    },
+    "fullName": "Charlie Pending Restaurant",
+    "email": "pending@restaurant.com",
+    "password": "$2a$10$j3E.2F84v.oV6oPzD1eRe.R3s8d9x1U5H5u4t.91sD/1.c9v.r3wS",
+    "phoneNumber": "+15551112222",
+    "role": "RESTAURANT",
+    "accountStatus": "ACTIVE",
+    "createdAt": {
+      "$date": "2026-07-18T12:45:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T12:45:00Z"
+    },
+    "_class": "com.foodflow.document.UserDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3c05"
+    },
+    "fullName": "Diana Pending NGO",
+    "email": "pending@ngo.org",
+    "password": "$2a$10$j3E.2F84v.oV6oPzD1eRe.R3s8d9x1U5H5u4t.91sD/1.c9v.r3wS",
+    "phoneNumber": "+15553334444",
+    "role": "NGO",
+    "accountStatus": "ACTIVE",
+    "createdAt": {
+      "$date": "2026-07-18T13:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T13:00:00Z"
+    },
+    "_class": "com.foodflow.document.UserDocument"
+  }
+]

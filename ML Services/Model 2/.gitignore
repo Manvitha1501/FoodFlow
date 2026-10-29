@@ -1,0 +1,4 @@
+echo "__pycache__/" >> .gitignore
+echo "*.pyc" >> .gitignore
+echo "run_log.txt" >> .gitignore
+echo "test_log.txt" >> .gitignore

@@ -1,0 +1,129 @@
+[
+  {
+    "id": "DON-9042",
+    "restaurant": "Grand Horizon Buffet",
+    "location": "Downtown District, Zone 4",
+    "foodType": "Prepared Hot Meals (Catering Surplus)",
+    "quantityKg": 180,
+    "mealsCount": 450,
+    "preparedTime": "2026-07-31T07:30:00Z",
+    "foodAgeHours": 2.2,
+    "storageCondition": "Hot Holding (65°C)",
+    "temperature": "65°C",
+    "packagingQuality": "Vacuum-Sealed Thermal Trays",
+    "readinessScore": 94,
+    "readinessLevel": "High",
+    "readinessBreakdown": [
+      { "factor": "Freshness Window", "score": 98, "weight": 35, "note": "Prepared 2.2h ago, optimal thermal window" },
+      { "factor": "Storage Temperature", "score": 95, "weight": 25, "note": "65°C hot holding, zero path-growth risk" },
+      { "factor": "Packaging Quality", "score": 90, "weight": 20, "note": "Commercial Grade Vacuum Sealed" },
+      { "factor": "Donor Trust Index", "score": 92, "weight": 20, "note": "Grade A+ historical compliance" }
+    ],
+    "successProbability": 92,
+    "riskLevel": "Low Risk",
+    "modelMetrics": {
+      "accuracy": 0.948,
+      "precision": 0.932,
+      "recall": 0.961,
+      "f1": 0.946,
+      "rocAuc": 0.978
+    },
+    "rocData": [
+      { "fpr": 0.0, "tpr": 0.0 },
+      { "fpr": 0.02, "tpr": 0.35 },
+      { "fpr": 0.05, "tpr": 0.72 },
+      { "fpr": 0.08, "tpr": 0.89 },
+      { "fpr": 0.12, "tpr": 0.94 },
+      { "fpr": 0.20, "tpr": 0.97 },
+      { "fpr": 0.50, "tpr": 0.99 },
+      { "fpr": 1.0, "tpr": 1.0 }
+    ],
+    "riskFactors": [
+      { "name": "NGO Cold/Hot Capacity", "status": "pass", "note": "Matches 3 nearby NGOs with heated transport" },
+      { "name": "Pickup Delay History", "status": "pass", "note": "Average driver arrival time < 18 mins" },
+      { "name": "Distance Radius", "status": "pass", "note": "Primary target NGO located within 3.4 km" },
+      { "name": "Weather Conditions", "status": "pass", "note": "Clear skies, mild ambient 24°C" },
+      { "name": "Traffic Congestion", "status": "warn", "note": "Moderate rush hour slowdown (+8 mins on Route 9)" },
+      { "name": "Remaining Safe Life", "status": "pass", "note": "5.8 hours remaining before mandatory disposal" },
+      { "name": "Past Completion Rate", "status": "pass", "note": "98.4% completed successfully for this donor" },
+      { "name": "Quantity Compatibility", "status": "pass", "note": "450 meals fit 100% into top recipient's daily quota" }
+    ],
+    "status": "Pending Allocation",
+    "createdAt": "2026-07-31T09:15:00Z"
+  },
+  {
+    "id": "DON-8819",
+    "restaurant": "Green Garden Organic Bakery",
+    "location": "Westside Hub, St. John St",
+    "foodType": "Fresh Baked Artisan Goods",
+    "quantityKg": 95,
+    "mealsCount": 240,
+    "preparedTime": "2026-07-31T05:00:00Z",
+    "foodAgeHours": 4.8,
+    "storageCondition": "Ambient Clean Room (20°C)",
+    "temperature": "20°C",
+    "packagingQuality": "Individual Eco-Kraft Containers",
+    "readinessScore": 86,
+    "readinessLevel": "High",
+    "readinessBreakdown": [
+      { "factor": "Freshness Window", "score": 82, "weight": 35, "note": "Baked morning of donation" },
+      { "factor": "Storage Temperature", "score": 90, "weight": 25, "note": "Dry cool storage" },
+      { "factor": "Packaging Quality", "score": 88, "weight": 20, "note": "Individual sealed paper packaging" },
+      { "factor": "Donor Trust Index", "score": 85, "weight": 20, "note": "Consistent reliable donor" }
+    ],
+    "successProbability": 84,
+    "riskLevel": "Low Risk",
+    "status": "Matched",
+    "createdAt": "2026-07-31T08:00:00Z"
+  },
+  {
+    "id": "DON-7741",
+    "restaurant": "Seafood Bay Grill",
+    "location": "Harbor Wharf, Pier 12",
+    "foodType": "Chilled Prepped Seafood & Salad",
+    "quantityKg": 120,
+    "mealsCount": 300,
+    "preparedTime": "2026-07-31T04:15:00Z",
+    "foodAgeHours": 5.5,
+    "storageCondition": "Refrigerated (3°C)",
+    "temperature": "3°C",
+    "packagingQuality": "Insulated Cool Boxes with Ice Packs",
+    "readinessScore": 68,
+    "readinessLevel": "Medium",
+    "readinessBreakdown": [
+      { "factor": "Freshness Window", "score": 62, "weight": 35, "note": "Approaching 6h perishable threshold" },
+      { "factor": "Storage Temperature", "score": 92, "weight": 25, "note": "Strict 3°C cold chain intact" },
+      { "factor": "Packaging Quality", "score": 75, "weight": 20, "note": "Ice box required for dispatch" },
+      { "factor": "Donor Trust Index", "score": 45, "weight": 20, "note": "Recent delay in past pickup logging" }
+    ],
+    "successProbability": 64,
+    "riskLevel": "Medium Risk",
+    "status": "Allocated",
+    "createdAt": "2026-07-31T07:30:00Z"
+  },
+  {
+    "id": "DON-6502",
+    "restaurant": "City Center Bistro",
+    "location": "Financial Plaza, B2",
+    "foodType": "Unconsumed Buffet Soups & Stews",
+    "quantityKg": 60,
+    "mealsCount": 150,
+    "preparedTime": "2026-07-30T21:00:00Z",
+    "foodAgeHours": 12.8,
+    "storageCondition": "Refrigerated (5°C)",
+    "temperature": "5°C",
+    "packagingQuality": "Standard Plastic Containers",
+    "readinessScore": 42,
+    "readinessLevel": "Low",
+    "readinessBreakdown": [
+      { "factor": "Freshness Window", "score": 30, "weight": 35, "note": "Over 12h age requires immediate dispatch" },
+      { "factor": "Storage Temperature", "score": 70, "weight": 25, "note": "Refrigerated but close to upper limit" },
+      { "factor": "Packaging Quality", "score": 40, "weight": 20, "note": "Unsealed lids reported on 1 tub" },
+      { "factor": "Donor Trust Index", "score": 35, "weight": 20, "note": "Multiple past cancellations" }
+    ],
+    "successProbability": 38,
+    "riskLevel": "High Risk",
+    "status": "Declined",
+    "createdAt": "2026-07-31T06:00:00Z"
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "_id": {
+      "$oid": "66b1b34f702f9d5630c45f90"
+    },
+    "entityId": "66b1a20a702f9d5630c45e10",
+    "entityType": "RESTAURANT",
+    "weightedScore": 92.5,
+    "bayesianScore": 89.8,
+    "finalTrustScore": 89.8,
+    "trustLevel": "HIGH",
+    "scoreBreakdown": {
+      "foodAccuracy": 95.0,
+      "successfulDonations": 96.0,
+      "cancellationRate": 92.0,
+      "qualityHistory": 90.0,
+      "responseTime": 88.0,
+      "pickupPunctuality": null,
+      "completionRate": null,
+      "acceptanceRate": null,
+      "responseSpeed": null,
+      "restaurantRating": null
+    },
+    "successfulAllocations": 24,
+    "failedAllocations": 0,
+    "cancelledAllocations": 2,
+    "totalAllocations": 26,
+    "lastCalculatedAt": {
+      "$date": "2026-08-05T13:30:00.000Z"
+    },
+    "version": 3,
+    "createdAt": {
+      "$date": "2026-08-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-05T13:30:00.000Z"
+    },
+    "_class": "com.foodflow.document.TrustDocument"
+  },
+  {
+    "_id": {
+      "$oid": "66b1b34f702f9d5630c45f91"
+    },
+    "entityId": "66b1a20b702f9d5630c45e12",
+    "entityType": "NGO",
+    "weightedScore": 94.0,
+    "bayesianScore": 91.2,
+    "finalTrustScore": 91.2,
+    "trustLevel": "HIGH",
+    "scoreBreakdown": {
+      "foodAccuracy": null,
+      "successfulDonations": null,
+      "cancellationRate": null,
+      "qualityHistory": null,
+      "responseTime": null,
+      "pickupPunctuality": 92.0,
+      "completionRate": 95.0,
+      "acceptanceRate": 96.0,
+      "responseSpeed": 90.0,
+      "restaurantRating": 97.0
+    },
+    "successfulAllocations": 20,
+    "failedAllocations": 1,
+    "cancelledAllocations": 1,
+    "totalAllocations": 22,
+    "lastCalculatedAt": {
+      "$date": "2026-08-05T13:30:00.000Z"
+    },
+    "version": 4,
+    "createdAt": {
+      "$date": "2026-08-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-05T13:30:00.000Z"
+    },
+    "_class": "com.foodflow.document.TrustDocument"
+  }
+]

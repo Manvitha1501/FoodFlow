@@ -1,0 +1,51 @@
+[
+  {
+    "_id": {
+      "$oid": "6a62044ac0adf3141ce0c8c9"
+    },
+    "donationId": "60c72b2f9b1d8b2bad7f3e02",
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "generatedAt": {
+      "$date": "2026-07-24T07:55:00.000Z"
+    },
+    "matchingVersion": "1.0.0",
+    "matchingStatus": "COMPLETED",
+    "rankedNGOs": [
+      {
+        "ngoId": "60c72b2f9b1d8b2bad7f3d03",
+        "ngoName": "Feed The Hungry Foundation",
+        "matchingScore": 96.1,
+        "rank": 1,
+        "distanceKm": 1.2,
+        "foodDemandScore": 95.0,
+        "storageScore": 100.0,
+        "beneficiaryScore": 90.0,
+        "foodCompatibilityScore": 100.0,
+        "trustScore": 96.0,
+        "pickupAvailabilityScore": 100.0,
+        "reason": "Excellent suitability: very close distance; vehicle available for pickup; high organization trust score"
+      },
+      {
+        "ngoId": "60c72b2f9b1d8b2bad7f3d04",
+        "ngoName": "New Hope NGO",
+        "matchingScore": 82.5,
+        "rank": 2,
+        "distanceKm": 4.5,
+        "foodDemandScore": 80.0,
+        "storageScore": 100.0,
+        "beneficiaryScore": 70.0,
+        "foodCompatibilityScore": 100.0,
+        "trustScore": 100.0,
+        "pickupAvailabilityScore": 0.0,
+        "reason": "Good suitability: high beneficiary capacity"
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-07-24T07:55:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-24T07:55:00.000Z"
+    },
+    "_class": "com.foodflow.document.NGOMatchingDocument"
+  }
+]

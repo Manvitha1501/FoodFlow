@@ -1,0 +1,272 @@
+[
+  {
+    "_id": {
+      "$oid": "66b1a23f702f9d5630c45e80"
+    },
+    "allocationId": "66b1a23e702f9d5630c45e75",
+    "donationId": "66b1a23d702f9d5630c45e70",
+    "restaurantId": "66b1a20a702f9d5630c45e10",
+    "ngoId": "66b1a20b702f9d5630c45e12",
+    "currentStatus": "NGO_ACCEPTED",
+    "acceptedAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "confirmedAt": null,
+    "pickupScheduledTime": null,
+    "pickupStartedAt": null,
+    "pickupCompletedAt": null,
+    "deliveryCompletedAt": null,
+    "completedAt": null,
+    "cancelledAt": null,
+    "completionRemarks": null,
+    "version": 1,
+    "createdAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "statusHistory": [
+      {
+        "previousStatus": "PUBLISHED",
+        "newStatus": "NGO_ACCEPTED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T10:15:30.000Z"
+        },
+        "remarks": "NGO accepted allocation slice"
+      }
+    ],
+    "_class": "com.foodflow.document.AllocationWorkflowDocument"
+  },
+  {
+    "_id": {
+      "$oid": "66b1a23f702f9d5630c45e81"
+    },
+    "allocationId": "66b1a23e702f9d5630c45e75",
+    "donationId": "66b1a23d702f9d5630c45e70",
+    "restaurantId": "66b1a20a702f9d5630c45e10",
+    "ngoId": "66b1a20b702f9d5630c45e12",
+    "currentStatus": "PICKUP_STARTED",
+    "acceptedAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "confirmedAt": {
+      "$date": "2026-08-05T10:20:00.000Z"
+    },
+    "pickupScheduledTime": {
+      "$date": "2026-08-05T12:00:00.000Z"
+    },
+    "pickupStartedAt": {
+      "$date": "2026-08-05T11:45:00.000Z"
+    },
+    "pickupCompletedAt": null,
+    "deliveryCompletedAt": null,
+    "completedAt": null,
+    "cancelledAt": null,
+    "completionRemarks": null,
+    "version": 4,
+    "createdAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-05T11:45:00.000Z"
+    },
+    "statusHistory": [
+      {
+        "previousStatus": "PUBLISHED",
+        "newStatus": "NGO_ACCEPTED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T10:15:30.000Z"
+        },
+        "remarks": "NGO accepted allocation slice"
+      },
+      {
+        "previousStatus": "NGO_ACCEPTED",
+        "newStatus": "RESTAURANT_CONFIRMED",
+        "changedBy": "owner@greenbistro.com",
+        "changedAt": {
+          "$date": "2026-08-05T10:20:00.000Z"
+        },
+        "remarks": "Restaurant confirmed NGO"
+      },
+      {
+        "previousStatus": "RESTAURANT_CONFIRMED",
+        "newStatus": "PICKUP_SCHEDULED",
+        "changedBy": "owner@greenbistro.com",
+        "changedAt": {
+          "$date": "2026-08-05T10:25:00.000Z"
+        },
+        "remarks": "Pickup scheduled for 2026-08-05T12:00:00.000Z"
+      },
+      {
+        "previousStatus": "PICKUP_SCHEDULED",
+        "newStatus": "PICKUP_STARTED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T11:45:00.000Z"
+        },
+        "remarks": "Pickup started"
+      }
+    ],
+    "_class": "com.foodflow.document.AllocationWorkflowDocument"
+  },
+  {
+    "_id": {
+      "$oid": "66b1a23f702f9d5630c45e82"
+    },
+    "allocationId": "66b1a23e702f9d5630c45e75",
+    "donationId": "66b1a23d702f9d5630c45e70",
+    "restaurantId": "66b1a20a702f9d5630c45e10",
+    "ngoId": "66b1a20b702f9d5630c45e12",
+    "currentStatus": "COMPLETED",
+    "acceptedAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "confirmedAt": {
+      "$date": "2026-08-05T10:20:00.000Z"
+    },
+    "pickupScheduledTime": {
+      "$date": "2026-08-05T12:00:00.000Z"
+    },
+    "pickupStartedAt": {
+      "$date": "2026-08-05T11:45:00.000Z"
+    },
+    "pickupCompletedAt": {
+      "$date": "2026-08-05T12:15:00.000Z"
+    },
+    "deliveryCompletedAt": {
+      "$date": "2026-08-05T13:00:00.000Z"
+    },
+    "completedAt": {
+      "$date": "2026-08-05T13:00:00.000Z"
+    },
+    "cancelledAt": null,
+    "completionRemarks": "Food successfully distributed to shelter residents.",
+    "version": 7,
+    "createdAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-05T13:00:00.000Z"
+    },
+    "statusHistory": [
+      {
+        "previousStatus": "PUBLISHED",
+        "newStatus": "NGO_ACCEPTED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T10:15:30.000Z"
+        },
+        "remarks": "NGO accepted allocation slice"
+      },
+      {
+        "previousStatus": "NGO_ACCEPTED",
+        "newStatus": "RESTAURANT_CONFIRMED",
+        "changedBy": "owner@greenbistro.com",
+        "changedAt": {
+          "$date": "2026-08-05T10:20:00.000Z"
+        },
+        "remarks": "Restaurant confirmed NGO"
+      },
+      {
+        "previousStatus": "RESTAURANT_CONFIRMED",
+        "newStatus": "PICKUP_SCHEDULED",
+        "changedBy": "owner@greenbistro.com",
+        "changedAt": {
+          "$date": "2026-08-05T10:25:00.000Z"
+        },
+        "remarks": "Pickup scheduled for 2026-08-05T12:00:00.000Z"
+      },
+      {
+        "previousStatus": "PICKUP_SCHEDULED",
+        "newStatus": "PICKUP_STARTED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T11:45:00.000Z"
+        },
+        "remarks": "Pickup started"
+      },
+      {
+        "previousStatus": "PICKUP_STARTED",
+        "newStatus": "PICKED_UP",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T12:15:00.000Z"
+        },
+        "remarks": "Pickup completed"
+      },
+      {
+        "previousStatus": "PICKED_UP",
+        "newStatus": "DELIVERED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T13:00:00.000Z"
+        },
+        "remarks": "Food successfully distributed to shelter residents."
+      },
+      {
+        "previousStatus": "DELIVERED",
+        "newStatus": "COMPLETED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T13:00:00.000Z"
+        },
+        "remarks": "Workflow closed successfully"
+      }
+    ],
+    "_class": "com.foodflow.document.AllocationWorkflowDocument"
+  },
+  {
+    "_id": {
+      "$oid": "66b1a23f702f9d5630c45e83"
+    },
+    "allocationId": "66b1a23e702f9d5630c45e75",
+    "donationId": "66b1a23d702f9d5630c45e70",
+    "restaurantId": "66b1a20a702f9d5630c45e10",
+    "ngoId": "66b1a20b702f9d5630c45e12",
+    "currentStatus": "CANCELLED",
+    "acceptedAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "confirmedAt": null,
+    "pickupScheduledTime": null,
+    "pickupStartedAt": null,
+    "pickupCompletedAt": null,
+    "deliveryCompletedAt": null,
+    "completedAt": null,
+    "cancelledAt": {
+      "$date": "2026-08-05T10:30:00.000Z"
+    },
+    "completionRemarks": "NGO vehicle breakdown - unable to pick up.",
+    "version": 2,
+    "createdAt": {
+      "$date": "2026-08-05T10:15:30.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-05T10:30:00.000Z"
+    },
+    "statusHistory": [
+      {
+        "previousStatus": "PUBLISHED",
+        "newStatus": "NGO_ACCEPTED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T10:15:30.000Z"
+        },
+        "remarks": "NGO accepted allocation slice"
+      },
+      {
+        "previousStatus": "NGO_ACCEPTED",
+        "newStatus": "CANCELLED",
+        "changedBy": "charity@foodflow.org",
+        "changedAt": {
+          "$date": "2026-08-05T10:30:00.000Z"
+        },
+        "remarks": "NGO vehicle breakdown - unable to pick up."
+      }
+    ],
+    "_class": "com.foodflow.document.AllocationWorkflowDocument"
+  }
+]

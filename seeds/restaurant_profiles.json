@@ -1,0 +1,50 @@
+[
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3d01"
+    },
+    "userId": "60c72b2f9b1d8b2bad7f3c02",
+    "restaurantName": "Green Bistro Cafe",
+    "address": "120 Eco Avenue, New Delhi",
+    "coordinates": {
+      "latitude": 28.6139,
+      "longitude": 77.2090
+    },
+    "licenseNumber": "FSSAI-987654321",
+    "trustScore": 4.9,
+    "totalMealsDonated": 1250,
+    "totalCO2Saved": 487.5,
+    "verificationStatus": "APPROVED",
+    "createdAt": {
+      "$date": "2026-07-18T12:15:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T12:15:00Z"
+    },
+    "_class": "com.foodflow.document.RestaurantProfileDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3d02"
+    },
+    "userId": "60c72b2f9b1d8b2bad7f3c04",
+    "restaurantName": "Fresh Harvest Cafe",
+    "address": "78 Organic Road, New Delhi",
+    "coordinates": {
+      "latitude": 28.5550,
+      "longitude": 77.2680
+    },
+    "licenseNumber": "FSSAI-112233445",
+    "trustScore": 5.0,
+    "totalMealsDonated": 0,
+    "totalCO2Saved": 0.0,
+    "verificationStatus": "PENDING",
+    "createdAt": {
+      "$date": "2026-07-18T12:45:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-18T12:45:00Z"
+    },
+    "_class": "com.foodflow.document.RestaurantProfileDocument"
+  }
+]

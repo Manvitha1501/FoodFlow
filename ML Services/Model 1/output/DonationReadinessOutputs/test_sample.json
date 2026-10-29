@@ -1,0 +1,11 @@
+{
+  "temperature_c": 3.5,
+  "humidity_pct": 82.0,
+  "co2_ppm": 360,
+  "light_lux": 15,
+  "hours_since_stored": 1.5,
+  "remaining_fridge_life_pct": 90,
+  "batch_weight_kg": 12.5,
+  "food_item": "cooked_chicken",
+  "food_category": "poultry_cooked"
+}

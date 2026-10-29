@@ -1,0 +1,4123 @@
+{
+	"info": {
+		"_postman_id": "848ba26a-9f4a-4712-bf9e-f4460df648d0",
+		"name": "FoodFlow API - Auth, Profile & Donation Management",
+		"description": "Postman collection for Module 1 (Auth & Auth), Module 2 (Profile Management), and Module 3 (Donation Management) of the FoodFlow Platform.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register NGO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"charity@foodflow.org\",\n  \"password\": \"password123\",\n  \"fullName\": \"Bob Charity\",\n  \"phoneNumber\": \"+15556667777\",\n  \"role\": \"NGO\",\n  \"ngoDetails\": {\n    \"ngoName\": \"Feed the Needy NGO\",\n    \"address\": \"450 Care Lane, Sector 6, New Delhi\",\n    \"coordinates\": {\n      \"latitude\": 28.5355,\n      \"longitude\": 77.3910\n    },\n    \"capacity\": 500,\n    \"storageType\": \"COLD\",\n    \"registrationNumber\": \"NGO-REG-111\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"owner@greenbistro.com\",\n  \"password\": \"password123\",\n  \"fullName\": \"Alice Green\",\n  \"phoneNumber\": \"+19876543210\",\n  \"role\": \"RESTAURANT\",\n  \"restaurantDetails\": {\n    \"restaurantName\": \"Green Bistro Cafe\",\n    \"address\": \"120 Eco Avenue, New Delhi\",\n    \"coordinates\": {\n      \"latitude\": 28.6139,\n      \"longitude\": 77.2090\n    },\n    \"licenseNumber\": \"FSSAI-987654321\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Duplicate License (409 Conflict)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"another@greenbistro.com\",\n  \"password\": \"password123\",\n  \"fullName\": \"Charlie Green\",\n  \"phoneNumber\": \"+19876543211\",\n  \"role\": \"RESTAURANT\",\n  \"restaurantDetails\": {\n    \"restaurantName\": \"Green Bistro Duplicate\",\n    \"address\": \"120 Eco Avenue, New Delhi\",\n    \"coordinates\": {\n      \"latitude\": 28.6139,\n      \"longitude\": 77.2090\n    },\n    \"licenseNumber\": \"FSSAI-987654321\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"token\", jsonData.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"owner@greenbistro.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/user/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile (User Fields)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Alice Green Revised\",\n  \"phoneNumber\": \"+19876543210\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/user/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"password123\",\n  \"newPassword\": \"newSecurePass123\",\n  \"confirmNewPassword\": \"newSecurePass123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/user/change-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurant Profile",
+			"item": [
+				{
+					"name": "Get Restaurant Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/restaurant/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Restaurant Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"restaurantName\": \"Green Bistro & Bar\",\n  \"ownerName\": \"Alice Green\",\n  \"email\": \"owner@greenbistro.com\",\n  \"phoneNumber\": \"+19876543210\",\n  \"restaurantType\": \"Fine Dining\",\n  \"foodCategories\": [\"VEG\", \"NON-VEG\"],\n  \"address\": \"120 Eco Avenue, New Delhi\",\n  \"city\": \"New Delhi\",\n  \"state\": \"Delhi\",\n  \"pincode\": \"110001\",\n  \"coordinates\": {\n    \"latitude\": 28.6139,\n    \"longitude\": 77.2090\n  },\n  \"openingTime\": \"09:00 AM\",\n  \"closingTime\": \"11:00 PM\",\n  \"description\": \"Eco-friendly fine dining space.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/restaurant/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Restaurants",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/restaurant/search?name=Green&city=New+Delhi",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Green"
+								},
+								{
+									"key": "city",
+									"value": "New Delhi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Restaurant Profile (NGO Token) (403 Forbidden)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"restaurantName\": \"Hacker Dining\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/restaurant/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/restaurant/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Restaurant Profile (After Soft Delete) (404 Not Found)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/restaurant/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NGO Profile",
+			"item": [
+				{
+					"name": "Get NGO Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/ngo/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"ngo",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update NGO Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ngoName\": \"Feed the Needy India\",\n  \"contactPerson\": \"Bob Charity\",\n  \"email\": \"charity@foodflow.org\",\n  \"phoneNumber\": \"+15556667777\",\n  \"address\": \"450 Care Lane, Sector 6, New Delhi\",\n  \"city\": \"New Delhi\",\n  \"state\": \"Delhi\",\n  \"pincode\": \"110001\",\n  \"coordinates\": {\n    \"latitude\": 28.5355,\n    \"longitude\": 77.3910\n  },\n  \"capacity\": 600,\n  \"storageType\": \"FREEZER\",\n  \"vehicleAvailable\": true,\n  \"operatingHours\": \"08:00 AM - 08:00 PM\",\n  \"acceptedFoodTypes\": [\"VEG\", \"COOKED\"],\n  \"description\": \"Non-profit dedicated to surplus distribution.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/ngo/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"ngo",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search NGOs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/ngo/search?name=Feed&city=New+Delhi",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"ngo",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Feed"
+								},
+								{
+									"key": "city",
+									"value": "New Delhi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete NGO Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/ngo/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"ngo",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Donation Management",
+			"item": [
+				{
+					"name": "Create Donation (Draft)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.id) {",
+									"    pm.environment.set(\"donationId\", jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"foodName\": \"Spaghetti Carbonara (Draft)\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/donations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Donation (Draft)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"foodCategory\": \"NON-VEG\",\n  \"quantity\": 10.0,\n  \"quantityUnit\": \"plates\",\n  \"preparedTime\": \"2026-07-19T18:00:00Z\",\n  \"expiryTime\": \"2026-07-19T23:00:00Z\",\n  \"storageCondition\": \"REFRIGERATED\",\n  \"packagingType\": \"CONTAINER\",\n  \"foodTemperature\": \"Hot\",\n  \"foodImages\": [\"https://cloudinary.com/foodflow/carbonara.jpg\"]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"{{donationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Donation By ID (Verify Auto-Fill Fallback)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"{{donationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Temporary Draft for Validation Testing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.id) {",
+									"    pm.environment.set(\"tempDraftId\", jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"foodName\": \"Incomplete Temp Draft\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/donations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Donation (Missing Fields Validation) (400 Bad Request)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/{{tempDraftId}}/publish",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"{{tempDraftId}}",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Donation (Happy Path)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/{{donationId}}/publish",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"{{donationId}}",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Donation After Publish (400 Bad Request)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"foodName\": \"Post-Publish Mutated Name\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"{{donationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Donations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations?page=0&size=10&sortBy=createdAt&direction=DESC",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "createdAt"
+								},
+								{
+									"key": "direction",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Donations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/search?name=Spaghetti&city=New+Delhi",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Spaghetti"
+								},
+								{
+									"key": "city",
+									"value": "New Delhi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Donations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/filter?filterType=PUBLISHED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "filterType",
+									"value": "PUBLISHED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Second Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"another@greenbistro.com\",\n  \"password\": \"password123\",\n  \"fullName\": \"Charlie Green\",\n  \"phoneNumber\": \"+19876543211\",\n  \"role\": \"RESTAURANT\",\n  \"restaurantDetails\": {\n    \"restaurantName\": \"Green Bistro Branch 2\",\n    \"address\": \"456 Main Road, New Delhi\",\n    \"coordinates\": {\n      \"latitude\": 28.5550,\n      \"longitude\": 77.2680\n    },\n    \"licenseNumber\": \"FSSAI-000000000\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Second Restaurant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"token2\", jsonData.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"another@greenbistro.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cross-Restaurant Ownership Guard (403 Forbidden)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"foodName\": \"Hacked Name\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"{{donationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Donation (Soft Delete)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"{{donationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Donation (After Soft Delete) (404 Not Found)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"{{donationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Get All Donations (Unfiltered Audit)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/donations?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NGO Access Guard (403 Forbidden)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"foodName\": \"Hacker Carbonara\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/donations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"donations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"token\", jsonData.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"admin@foodflow.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/dashboard",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Restaurants (Unfiltered Audit)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/restaurants?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"restaurants"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All NGOs (Unfiltered Audit)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/ngos?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"ngos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/restaurant/verify/REPLACE_WITH_PROFILE_ID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"restaurant",
+								"verify",
+								"REPLACE_WITH_PROFILE_ID"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify NGO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/ngo/verify/REPLACE_WITH_PROFILE_ID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"ngo",
+								"verify",
+								"REPLACE_WITH_PROFILE_ID"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/restaurant/deactivate/REPLACE_WITH_PROFILE_ID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"restaurant",
+								"deactivate",
+								"REPLACE_WITH_PROFILE_ID"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate NGO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/admin/ngo/deactivate/REPLACE_WITH_PROFILE_ID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"ngo",
+								"deactivate",
+								"REPLACE_WITH_PROFILE_ID"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AI Surplus Prediction",
+			"item": [
+				{
+					"name": "1. Trigger AI Readiness Prediction (Happy Path)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/predictions/readiness/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"predictions",
+								"readiness",
+								"{{donationId}}"
+							]
+						},
+						"description": "Triggers AI readiness prediction for an active draft or published donation."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Latest Prediction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/predictions/readiness/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"predictions",
+								"readiness",
+								"{{donationId}}"
+							]
+						},
+						"description": "Retrieves the single latest prediction record for a donation."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get Latest Prediction - No Predictions Yet (404)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/predictions/readiness/{{tempDraftId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"predictions",
+								"readiness",
+								"{{tempDraftId}}"
+							]
+						},
+						"description": "Verifies 404 PredictionNotFoundException when querying a donation with zero generated predictions."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Trigger Prediction - Invalid Status Cancelled (400)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/predictions/readiness/{{cancelledDonationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"predictions",
+								"readiness",
+								"{{cancelledDonationId}}"
+							]
+						},
+						"description": "Verifies 400 InvalidDonationStateException when attempting prediction on a cancelled/completed donation."
+					},
+					"response": []
+				},
+				{
+					"name": "5. Trigger Prediction - Non-Existent Donation (404)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/predictions/readiness/invalid-id-999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"predictions",
+								"readiness",
+								"invalid-id-999"
+							]
+						},
+						"description": "Verifies 404 DonationNotFoundException when attempting prediction on non-existent donation ID."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Trigger Prediction - Cross-Restaurant (403)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/predictions/readiness/60c72b2f9b1d8b2bad7f3e02",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"predictions",
+								"readiness",
+								"60c72b2f9b1d8b2bad7f3e02"
+							]
+						},
+						"description": "Verifies 403 AccessDeniedException when triggering prediction for a donation owned by another restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Get Prediction History (Restaurant View)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/predictions/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"predictions",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Returns paginated prediction history for the authenticated restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get Prediction History (Admin Audit View)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/predictions/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"predictions",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Returns platform-wide prediction history for admin audit view."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AI Donation Success & Risk Prediction",
+			"item": [
+				{
+					"name": "1. Trigger Risk Prediction (Happy Path)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.id) {",
+									"    pm.environment.set(\"riskPredictionId\", jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"weatherCondition\": \"CLEAR\",\n    \"trafficCondition\": \"NORMAL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{donationId}}/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{donationId}}",
+								"{{ngoId}}"
+							]
+						},
+						"description": "Triggers risk prediction (Happy Path) for a published donation and NGO."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Risk Prediction By ID (Restaurant View)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{riskPredictionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{riskPredictionId}}"
+							]
+						},
+						"description": "Returns full prediction details for restaurant view."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get Risk Prediction By ID (NGO View - Matched)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{riskPredictionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{riskPredictionId}}"
+							]
+						},
+						"description": "Returns prediction details for target matched NGO view."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get Prediction History (Restaurant View)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Gets prediction history for restaurant view."
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get Prediction History (NGO View)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Gets prediction history for NGO view."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Get Prediction History (Admin View)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Gets all predictions for admin audit view."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Get Predictions By Donation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/donation/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"donation",
+								"{{donationId}}"
+							]
+						},
+						"description": "Gets all risk predictions associated with a specific donation ID."
+					},
+					"response": []
+				},
+				{
+					"name": "8. Trigger Prediction - Duplicate Constraint (409)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"weatherCondition\": \"CLEAR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{donationId}}/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{donationId}}",
+								"{{ngoId}}"
+							]
+						},
+						"description": "Triggering prediction a second time with regenerate = false returns 409 Conflict."
+					},
+					"response": []
+				},
+				{
+					"name": "9. Trigger Prediction - Force Regenerate In-Place (200)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"weatherCondition\": \"RAINY\",\n    \"trafficCondition\": \"HEAVY\",\n    \"distanceInKm\": 12.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{donationId}}/{{ngoId}}?regenerate=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{donationId}}",
+								"{{ngoId}}"
+							],
+							"query": [
+								{
+									"key": "regenerate",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Triggering prediction with regenerate = true performs update-in-place and returns 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "10. Trigger Prediction - Invalid Status Draft (400)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{tempDraftId}}/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{tempDraftId}}",
+								"{{ngoId}}"
+							]
+						},
+						"description": "Cannot generate predictions for unpublished draft donations. Returns 400 Bad Request."
+					},
+					"response": []
+				},
+				{
+					"name": "11. Trigger Prediction - Validation Failure (400)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"distanceInKm\": -5.0,\n    \"completionRate\": 150.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{donationId}}/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{donationId}}",
+								"{{ngoId}}"
+							]
+						},
+						"description": "Range checks catch negative distance or out-of-bounds rates. Returns 400 Bad Request."
+					},
+					"response": []
+				},
+				{
+					"name": "12. Trigger Prediction - NGO Not Active/Approved (400)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{donationId}}/60c72b2f9b1d8b2bad7f3c05",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{donationId}}",
+								"60c72b2f9b1d8b2bad7f3c05"
+							]
+						},
+						"description": "Triggering prediction for a pending/deactivated NGO fails. Returns 400 Bad Request."
+					},
+					"response": []
+				},
+				{
+					"name": "13. Trigger Prediction - Cross-Restaurant Ownership (403)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{donationId}}/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{donationId}}",
+								"{{ngoId}}"
+							]
+						},
+						"description": "Triggering prediction for a donation owned by another restaurant fails. Returns 403 Forbidden."
+					},
+					"response": []
+				},
+				{
+					"name": "14. Trigger Prediction - NGOs Blocked (403)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{donationId}}/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{donationId}}",
+								"{{ngoId}}"
+							]
+						},
+						"description": "NGOs are not authorized to trigger predictions. Returns 403 Forbidden."
+					},
+					"response": []
+				},
+				{
+					"name": "15. Get Prediction - NGO Unassigned Blocked (403)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{riskPredictionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{riskPredictionId}}"
+							]
+						},
+						"description": "NGO callers are blocked from viewing unassigned predictions. Returns 403 Forbidden."
+					},
+					"response": []
+				},
+				{
+					"name": "16. Get Prediction - Non-Existent ID (404)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/60c72b2f9b1d8b2bad7f3fff",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"60c72b2f9b1d8b2bad7f3fff"
+							]
+						},
+						"description": "Queries a non-existent prediction ID. Returns 404 Not Found."
+					},
+					"response": []
+				},
+				{
+					"name": "17. Trigger Prediction - NGO Not Found (404)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/{{donationId}}/60c72b2f9b1d8b2bad7f3fff",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"{{donationId}}",
+								"60c72b2f9b1d8b2bad7f3fff"
+							]
+						},
+						"description": "Triggers prediction with non-existent NGO ID. Returns 404 Not Found."
+					},
+					"response": []
+				},
+				{
+					"name": "18. Trigger Prediction - Donation Not Found (404)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/risk-prediction/60c72b2f9b1d8b2bad7f3fff/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"risk-prediction",
+								"60c72b2f9b1d8b2bad7f3fff",
+								"{{ngoId}}"
+							]
+						},
+						"description": "Triggers prediction with non-existent donation ID. Returns 404 Not Found."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Intelligent NGO Suitability Matching",
+			"item": [
+				{
+					"name": "1. Generate NGO Matching - Success (200)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{donationId}}"
+							]
+						},
+						"description": "Generates suitability matching for a published donation owned by the calling restaurant. Returns 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Latest Matching Result - Restaurant View (200)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{donationId}}"
+							]
+						},
+						"description": "Retrieves the latest matching results as the owner restaurant. Returns 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get Latest Matching Result - Assigned NGO View (200)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{donationId}}"
+							]
+						},
+						"description": "Retrieves the matching results as the assigned NGO. Returns 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get Latest Matching Result - Admin View (200)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{donationId}}"
+							]
+						},
+						"description": "Retrieves the latest matching results as an Admin. Returns 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get Matching History - Restaurant View (200)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Retrieves matching runs created by the calling restaurant. Returns 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Get Matching History - Admin View (200)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Retrieves all global matching runs (Admin privileges). Returns 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Generate NGO Matching - NGO Blocked (403)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{donationId}}"
+							]
+						},
+						"description": "Attempts matching generation using an NGO token. Returns 403 Forbidden."
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get Matching History - NGO Blocked (403)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Attempts retrieval of history as an NGO. Returns 403 Forbidden."
+					},
+					"response": []
+				},
+				{
+					"name": "9. Generate NGO Matching - Cross-Restaurant Blocked (403)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{donationId}}"
+							]
+						},
+						"description": "Attempts matching generation for a donation owned by a different restaurant. Returns 403 Forbidden."
+					},
+					"response": []
+				},
+				{
+					"name": "10. Get Latest Matching - Cross-Restaurant Blocked (403)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{donationId}}"
+							]
+						},
+						"description": "Attempts retrieval of matching results owned by a different restaurant. Returns 403 Forbidden."
+					},
+					"response": []
+				},
+				{
+					"name": "11. Generate NGO Matching - Donation Not Published (400)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{tempDraftId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{tempDraftId}}"
+							]
+						},
+						"description": "Attempts matching generation on a DRAFT donation. Returns 400 Bad Request."
+					},
+					"response": []
+				},
+				{
+					"name": "12. Generate NGO Matching - No Eligible NGOs Found (404)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{noEligibleNgosDonationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{noEligibleNgosDonationId}}"
+							]
+						},
+						"description": "Attempts matching generation when no candidate matches requirements. Returns 404 Not Found (NoEligibleNgosFoundException)."
+					},
+					"response": []
+				},
+				{
+					"name": "13. Get Latest Matching - Matching Not Found (404)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/{{tempDraftId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"{{tempDraftId}}"
+							]
+						},
+						"description": "Attempts retrieval for a donation that exists but has no matching run yet. Returns 404 Not Found (MatchingNotFoundException)."
+					},
+					"response": []
+				},
+				{
+					"name": "14. Generate NGO Matching - Invalid ID Format (400)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/matching/invalid-format-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"matching",
+								"invalid-format-id"
+							]
+						},
+						"description": "Attempts generation using a malformed ID string. Returns 400 Bad Request (DonationValidationException)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Smart Multi-NGO Splitting & Allocation",
+			"item": [
+				{
+					"name": "1. Generate Allocation (Greedy)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"algorithm\": \"GREEDY\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/allocation/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"allocation",
+								"{{donationId}}"
+							]
+						},
+						"description": "Generates splitting allocation using GREEDY algorithm."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Allocation by ID (Restaurant View)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/allocation/{{allocationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"allocation",
+								"{{allocationId}}"
+							]
+						},
+						"description": "Gets full allocation breakdown for restaurant."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get NGO Portion by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/allocation/{{allocationId}}/my-portion",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"allocation",
+								"{{allocationId}}",
+								"my-portion"
+							]
+						},
+						"description": "Gets specific NGO allocation slice portion."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get Allocation by Donation ID (Restaurant View)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/allocation/donation/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"allocation",
+								"donation",
+								"{{donationId}}"
+							]
+						},
+						"description": "Gets latest allocation breakdown by donation ID."
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get NGO Portion by Donation ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/allocation/donation/{{donationId}}/my-portion",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"allocation",
+								"donation",
+								"{{donationId}}",
+								"my-portion"
+							]
+						},
+						"description": "Gets latest NGO allocation slice portion by donation ID."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Get Allocation History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/allocation/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"allocation",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Gets paginated allocation history."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Generate Allocation (LP Strategy - 501 Unimplemented)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"algorithm\": \"LINEAR_PROGRAMMING\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/allocation/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"allocation",
+								"{{donationId}}"
+							]
+						},
+						"description": "Attempts to generate allocation using unimplemented LINEAR_PROGRAMMING algorithm. Returns 501 Not Implemented."
+					},
+					"response": []
+				},
+				{
+					"name": "8. Generate Allocation - Draft Donation (400 Bad Request)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"algorithm\": \"GREEDY\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/allocation/{{tempDraftId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"allocation",
+								"{{tempDraftId}}"
+							]
+						},
+						"description": "Attempts to generate allocation for a draft donation. Returns 400 Bad Request."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Donation Pickup Workflow",
+			"item": [
+				{
+					"name": "1. NGO Accept Allocation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}/accept",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}",
+								"accept"
+							]
+						},
+						"description": "NGO accepts its assigned allocation slice."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Restaurant Confirm NGO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}/confirm?targetNgoId={{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}",
+								"confirm"
+							],
+							"query": [
+								{
+									"key": "targetNgoId",
+									"value": "{{ngoId}}"
+								}
+							]
+						},
+						"description": "Restaurant confirms accepted NGO."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Schedule Pickup Time",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pickupScheduledTime\": \"2026-08-05T15:30:00.000Z\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}/schedule-pickup?targetNgoId={{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}",
+								"schedule-pickup"
+							],
+							"query": [
+								{
+									"key": "targetNgoId",
+									"value": "{{ngoId}}"
+								}
+							]
+						},
+						"description": "Restaurant schedules pickup time."
+					},
+					"response": []
+				},
+				{
+					"name": "4. NGO Start Pickup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}/pickup-start",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}",
+								"pickup-start"
+							]
+						},
+						"description": "NGO starts pickup process."
+					},
+					"response": []
+				},
+				{
+					"name": "5. NGO Complete Pickup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}/pickup-complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}",
+								"pickup-complete"
+							]
+						},
+						"description": "NGO completes food pickup."
+					},
+					"response": []
+				},
+				{
+					"name": "6. NGO Complete Delivery",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"completionRemarks\": \"Delivered successfully to shelter.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}/delivery-complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}",
+								"delivery-complete"
+							]
+						},
+						"description": "NGO completes food delivery (auto-closes workflow to COMPLETED)."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Cancel Workflow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"remarks\": \"Unable to fulfill request.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}/cancel?targetNgoId={{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "targetNgoId",
+									"value": "{{ngoId}}"
+								}
+							]
+						},
+						"description": "Cancels active workflow."
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get Workflow by Allocation ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}"
+							]
+						},
+						"description": "Gets workflow slice for NGO."
+					},
+					"response": []
+				},
+				{
+					"name": "9. Get Workflow History Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/{{allocationId}}/history",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"{{allocationId}}",
+								"history"
+							]
+						},
+						"description": "Gets status history audit entries for workflow slice."
+					},
+					"response": []
+				},
+				{
+					"name": "10. Get Donation Aggregate Workflows",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/donation/{{donationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"donation",
+								"{{donationId}}"
+							]
+						},
+						"description": "Gets aggregate list of all NGO workflows for a donation."
+					},
+					"response": []
+				},
+				{
+					"name": "11. Get Paginated Workflow History Feed",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/workflow/history?page=0&size=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"workflow",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Gets paginated history feed of workflows."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trust & Reliability Intelligence",
+			"item": [
+				{
+					"name": "1. Get Restaurant Trust Score",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/trust/restaurant/{{restaurantId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"trust",
+								"restaurant",
+								"{{restaurantId}}"
+							]
+						},
+						"description": "Gets Restaurant trust score and breakdown."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get NGO Trust Score",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/trust/ngo/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"trust",
+								"ngo",
+								"{{ngoId}}"
+							]
+						},
+						"description": "Gets NGO trust score and breakdown."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get Trust History Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/trust/history/RESTAURANT/{{restaurantId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"trust",
+								"history",
+								"RESTAURANT",
+								"{{restaurantId}}"
+							]
+						},
+						"description": "Gets audit trail of trust score calculations."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get Restaurant Leaderboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/trust/leaderboard/restaurants",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"trust",
+								"leaderboard",
+								"restaurants"
+							]
+						},
+						"description": "Gets pre-computed leaderboard of top-ranked restaurants."
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get NGO Leaderboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/trust/leaderboard/ngos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"trust",
+								"leaderboard",
+								"ngos"
+							]
+						},
+						"description": "Gets pre-computed leaderboard of top-ranked NGOs."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Get Explainable Trust Calculation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/trust/explanation/RESTAURANT/{{restaurantId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"trust",
+								"explanation",
+								"RESTAURANT",
+								"{{restaurantId}}"
+							]
+						},
+						"description": "Returns human-readable breakdown and explanation bullets."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Force Admin Trust Recalculation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/trust/recalculate/RESTAURANT/{{restaurantId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"trust",
+								"recalculate",
+								"RESTAURANT",
+								"{{restaurantId}}"
+							]
+						},
+						"description": "Admin manually triggers trust recalculation."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sustainability Impact Analytics",
+			"item": [
+				{
+					"name": "1. Get Platform Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/dashboard",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"dashboard"
+							]
+						},
+						"description": "Gets platform sustainability dashboard summary."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Restaurant Impact Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/restaurant/{{restaurantId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"restaurant",
+								"{{restaurantId}}"
+							]
+						},
+						"description": "Gets Restaurant specific sustainability metrics."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get NGO Impact Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/ngo/{{ngoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"ngo",
+								"{{ngoId}}"
+							]
+						},
+						"description": "Gets NGO specific distribution metrics."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get Daily Trends",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/trends/daily",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"trends",
+								"daily"
+							]
+						},
+						"description": "Gets daily time-series analytics."
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get Weekly Trends",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/trends/weekly",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"trends",
+								"weekly"
+							]
+						},
+						"description": "Gets weekly time-series analytics."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Get Monthly Trends",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/trends/monthly",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"trends",
+								"monthly"
+							]
+						},
+						"description": "Gets monthly time-series analytics."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Get Restaurant Contributors Leaderboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/leaderboard/restaurants",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"leaderboard",
+								"restaurants"
+							]
+						},
+						"description": "Gets top restaurant contributors sorted by food saved."
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get NGO Contributors Leaderboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ngoToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/leaderboard/ngos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"leaderboard",
+								"ngos"
+							]
+						},
+						"description": "Gets top NGO contributors sorted by meals delivered."
+					},
+					"response": []
+				},
+				{
+					"name": "9. Get Environmental Impact Summary",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analytics/environment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analytics",
+								"environment"
+							]
+						},
+						"description": "Gets environmental impact metrics (CO2, Trees, Water equivalents)."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8081"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "token2",
+			"value": ""
+		},
+		{
+			"key": "adminToken",
+			"value": ""
+		},
+		{
+			"key": "ngoToken",
+			"value": ""
+		},
+		{
+			"key": "ngoToken2",
+			"value": ""
+		},
+		{
+			"key": "donationId",
+			"value": ""
+		},
+		{
+			"key": "tempDraftId",
+			"value": ""
+		},
+		{
+			"key": "cancelledDonationId",
+			"value": ""
+		},
+		{
+			"key": "ngoId",
+			"value": ""
+		},
+		{
+			"key": "riskPredictionId",
+			"value": ""
+		},
+		{
+			"key": "noEligibleNgosDonationId",
+			"value": ""
+		},
+		{
+			"key": "allocationId",
+			"value": ""
+		}
+	]
+}

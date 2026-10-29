@@ -1,0 +1,132 @@
+{
+  "model_name": "XGBoost",
+  "best_params": {
+    "subsample": 0.8,
+    "reg_lambda": 1.0,
+    "reg_alpha": 0.1,
+    "n_estimators": "400",
+    "min_child_weight": "7",
+    "max_depth": "5",
+    "learning_rate": 0.05,
+    "gamma": 0.2,
+    "colsample_bytree": 0.75
+  },
+  "cv_results": {
+    "cv_macro_f1": 0.8106,
+    "cv_accuracy": 0.8142,
+    "avg_train_time_sec": 2.6218,
+    "avg_pred_time_sec": 0.0315
+  },
+  "metrics": {
+    "accuracy": 0.8176,
+    "precision_macro": 0.8051,
+    "recall_macro": 0.8276,
+    "f1_macro": 0.8141,
+    "precision_weighted": 0.82,
+    "recall_weighted": 0.8176,
+    "f1_weighted": 0.8173,
+    "roc_auc_ovr": 0.9478,
+    "log_loss": 0.3994,
+    "confusion_matrix": [
+      [
+        5905,
+        909,
+        0
+      ],
+      [
+        789,
+        4916,
+        933
+      ],
+      [
+        1,
+        377,
+        2663
+      ]
+    ],
+    "class_metrics": {
+      "Low": {
+        "precision": 0.882,
+        "recall": 0.8666,
+        "f1": 0.8742,
+        "support": 6814
+      },
+      "Medium": {
+        "precision": 0.7926,
+        "recall": 0.7406,
+        "f1": 0.7657,
+        "support": 6638
+      },
+      "High": {
+        "precision": 0.7405,
+        "recall": 0.8757,
+        "f1": 0.8025,
+        "support": 3041
+      }
+    },
+    "classification_report": {
+      "Low": {
+        "precision": 0.8820014936519791,
+        "recall": 0.8665981802171999,
+        "f1-score": 0.8742319934858243,
+        "support": 6814.0
+      },
+      "Medium": {
+        "precision": 0.7926475330538536,
+        "recall": 0.7405845134076529,
+        "f1-score": 0.7657320872274144,
+        "support": 6638.0
+      },
+      "High": {
+        "precision": 0.7405450500556173,
+        "recall": 0.8756987832949688,
+        "f1-score": 0.802470995931897,
+        "support": 3041.0
+      },
+      "accuracy": 0.8175589644091432,
+      "macro avg": {
+        "precision": 0.8050646922538167,
+        "recall": 0.8276271589732739,
+        "f1-score": 0.8141450255483785,
+        "support": 16493.0
+      },
+      "weighted avg": {
+        "precision": 0.8199569513960588,
+        "recall": 0.8175589644091432,
+        "f1-score": 0.8173322438159755,
+        "support": 16493.0
+      }
+    }
+  },
+  "error_analysis": {
+    "total_test_samples": 16493,
+    "total_misclassified": 3009,
+    "error_rate_pct": 18.24,
+    "misclassifications_by_pair": {
+      "True_Low_Predicted_Medium": 909,
+      "True_Medium_Predicted_Low": 789,
+      "True_Medium_Predicted_High": 933,
+      "True_High_Predicted_Low": 1,
+      "True_High_Predicted_Medium": 377
+    }
+  },
+  "mutual_information_scores": {
+    "environmental_spoilage_index": 0.3402,
+    "storage_risk_score": 0.3006,
+    "temp_humidity_interaction": 0.2395,
+    "temperature_c": 0.2298,
+    "donation_confidence_score": 0.2155,
+    "freshness_score": 0.1341,
+    "remaining_fridge_life_hours": 0.0984,
+    "remaining_fridge_life_pct": 0.0947,
+    "food_perishability_score": 0.0681,
+    "hours_since_stored": 0.05,
+    "pickup_urgency": 0.0475,
+    "co2_ppm": 0.0207,
+    "humidity_pct": 0.0204,
+    "co2_risk_level": 0.0194,
+    "light_lux": 0.0021,
+    "batch_weight_kg": 0.0005
+  },
+  "pruned_features": []
+}

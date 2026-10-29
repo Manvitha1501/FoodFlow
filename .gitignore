@@ -1,0 +1,15 @@
+# Maven build target
+target/
+
+# IDE files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# Local Secrets & Properties
+.env
+.env.local
+application-local.properties

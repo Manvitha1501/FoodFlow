@@ -1,0 +1,54 @@
+{
+  "DEC-9042": {
+    "decisionId": "DEC-9042",
+    "donationId": "DON-9042",
+    "targetDonation": "Hot Prepared Catering Meals (450 meals / 180kg)",
+    "winningNgo": {
+      "id": "NGO-101",
+      "name": "Hope Kitchen Community Shelter",
+      "finalScore": 95,
+      "badge": "Top Match"
+    },
+    "runnerUpNgo": {
+      "id": "NGO-102",
+      "name": "St. Jude Youth & Family Foundation",
+      "finalScore": 71,
+      "badge": "Nearest Candidate"
+    },
+    "summaryText": "NGO 'Hope Kitchen Community Shelter' was selected primarily due to strong capacity match (+35%), exceptionally high trust score (+25%), and superior thermal storage readiness over closer candidates.",
+    "shapFactors": [
+      { "name": "Base AI Baseline", "impact": 50, "type": "base", "description": "Global baseline candidate score" },
+      { "name": "Capacity & Intake Fit", "impact": 35, "type": "positive", "description": "520 active beneficiary capacity matches 450 meals" },
+      { "name": "Trust & Reliability Score", "impact": 25, "type": "positive", "description": "98% historic pickup punctuality record" },
+      { "name": "Distance & Logistics Radius", "impact": -5, "type": "negative", "description": "3.4 km distance vs 1.1 km nearest candidate" },
+      { "name": "Demand Urgency Level", "impact": 15, "type": "positive", "description": "High meal shortage reported at shelter today" },
+      { "name": "Food Temperature Compatibility", "impact": 25, "type": "positive", "description": "Equipped with heated thermal holding transport" }
+    ],
+    "runnerUpComparison": [
+      {
+        "factor": "Thermal Holding Capacity",
+        "winner": "Heated Van Fleet (65°C)",
+        "runnerUp": "Ambient Room Storage Only",
+        "impactDelta": "+25% to Winner"
+      },
+      {
+        "factor": "Capacity for 450 Meals",
+        "winner": "600 meals max cap",
+        "runnerUp": "150 meals max cap (Overflow risk)",
+        "impactDelta": "+30% to Winner"
+      },
+      {
+        "factor": "Proximity to Donor",
+        "winner": "3.4 km (11 mins)",
+        "runnerUp": "1.1 km (4 mins)",
+        "impactDelta": "-5% to Winner"
+      },
+      {
+        "factor": "Trust & On-time Arrival",
+        "winner": "98% On-Time",
+        "runnerUp": "82% On-Time",
+        "impactDelta": "+16% to Winner"
+      }
+    ]
+  }
+}

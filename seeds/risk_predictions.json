@@ -1,0 +1,56 @@
+[
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3f01"
+    },
+    "donationId": "60c72b2f9b1d8b2bad7f3e02",
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "ngoId": "60c72b2f9b1d8b2bad7f3c03",
+    "predictionRequestedAt": {
+      "$date": "2026-07-21T12:00:00Z"
+    },
+    "successProbability": 94.0,
+    "failureProbability": 6.0,
+    "riskLevel": "LOW",
+    "confidenceScore": 96.0,
+    "predictionExplanation": "High NGO capacity, short distance, low pickup delay and sufficient remaining freshness.",
+    "estimatedPickupTime": "20 minutes",
+    "estimatedDeliveryTime": "45 minutes",
+    "modelVersion": "1.0.0-placeholder-fallback",
+    "predictionStatus": "COMPLETED",
+    "createdAt": {
+      "$date": "2026-07-21T12:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-21T12:00:00Z"
+    },
+    "_class": "com.foodflow.document.DonationRiskPredictionDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3f02"
+    },
+    "donationId": "60c72b2f9b1d8b2bad7f3e02",
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "ngoId": "60c72b2f9b1d8b2bad7f3c05",
+    "predictionRequestedAt": {
+      "$date": "2026-07-21T13:30:00Z"
+    },
+    "successProbability": 82.0,
+    "failureProbability": 18.0,
+    "riskLevel": "MEDIUM",
+    "confidenceScore": 88.0,
+    "predictionExplanation": "Moderate pickup delay, normal traffic, sufficient capacity.",
+    "estimatedPickupTime": "35 minutes",
+    "estimatedDeliveryTime": "60 minutes",
+    "modelVersion": "1.0.0-placeholder-fallback",
+    "predictionStatus": "COMPLETED",
+    "createdAt": {
+      "$date": "2026-07-21T13:30:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-21T13:30:00Z"
+    },
+    "_class": "com.foodflow.document.DonationRiskPredictionDocument"
+  }
+]

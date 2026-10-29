@@ -1,0 +1,51 @@
+2026-07-25 00:39:32,247 [INFO] MasterPipeline: ======================================================================
+2026-07-25 00:39:32,247 [INFO] MasterPipeline:   STARTING OPTIMIZED XGBOOST MODEL 2 ML PIPELINE
+2026-07-25 00:39:32,247 [INFO] MasterPipeline: ======================================================================
+2026-07-25 00:39:32,247 [INFO] MasterPipeline: Training Data: D:\lovely\ml\data\model2_training_data.csv
+2026-07-25 00:39:32,247 [INFO] MasterPipeline: Output Directory: D:\lovely\ml\outputs\model2
+2026-07-25 00:39:32,358 [INFO] MasterPipeline: Loaded raw dataset: 109,950 rows, 10 columns.
+2026-07-25 00:39:32,359 [INFO] preprocessing: Initial raw dataset shape: (109950, 10)
+2026-07-25 00:39:32,370 [INFO] preprocessing: No missing values found.
+2026-07-25 00:39:32,412 [INFO] preprocessing: No duplicate records found.
+2026-07-25 00:39:32,441 [INFO] preprocessing: Target distribution:
+{'Low': 45423, 'Medium': 44255, 'High': 20272}
+2026-07-25 00:39:32,441 [INFO] preprocessing: Cleaned dataset shape: (109950, 11)
+2026-07-25 00:39:32,441 [INFO] feature_engineering: Computing domain-specific engineered features...
+2026-07-25 00:39:32,510 [INFO] feature_engineering: Engineered 9 domain features.
+2026-07-25 00:39:40,435 [INFO] feature_engineering: Top 10 Mutual Information Scores:
+environmental_spoilage_index    0.340249
+storage_risk_score              0.300626
+temp_humidity_interaction       0.239505
+temperature_c                   0.229784
+donation_confidence_score       0.215481
+freshness_score                 0.134130
+remaining_fridge_life_hours     0.098371
+remaining_fridge_life_pct       0.094666
+food_perishability_score        0.068096
+hours_since_stored              0.049958
+dtype: float64
+2026-07-25 00:39:40,474 [INFO] MasterPipeline: Final feature set (18 features): ['temperature_c', 'humidity_pct', 'co2_ppm', 'light_lux', 'hours_since_stored', 'remaining_fridge_life_pct', 'batch_weight_kg', 'remaining_fridge_life_hours', 'storage_risk_score', 'environmental_spoilage_index', 'temp_humidity_interaction', 'co2_risk_level', 'pickup_urgency', 'food_perishability_score', 'donation_confidence_score', 'freshness_score', 'food_item', 'food_category']
+2026-07-25 00:39:40,535 [INFO] MasterPipeline: Split distribution -> Train: 76,965 | Val: 16,492 | Test: 16,493
+2026-07-25 00:39:40,681 [INFO] train: Evaluating XGBoost Classifier with 5-Fold Stratified CV...
+2026-07-25 00:40:03,153 [INFO] train: [XGBoost] Stratified 5-Fold CV Macro F1: 0.8103 | Accuracy: 0.8138
+2026-07-25 00:40:03,154 [INFO] train: Tuning anti-overfitting hyperparameters for XGBoost...
+2026-07-25 00:43:24,942 [INFO] train: Best tuned XGBoost hyperparams: {'subsample': 0.75, 'reg_lambda': 2.0, 'reg_alpha': 0.1, 'n_estimators': 500, 'min_child_weight': 3, 'max_depth': 5, 'learning_rate': 0.03, 'gamma': 0.2, 'colsample_bytree': 0.8}
+2026-07-25 00:43:47,310 [INFO] evaluate: Evaluation Results -> Accuracy: 0.8164 | Macro F1: 0.8131 | Macro Recall: 0.8269 | ROC-AUC: 0.9475
+2026-07-25 00:43:47,388 [INFO] evaluate: Error Analysis: 3028/16493 samples misclassified (18.36%)
+2026-07-25 00:43:48,035 [INFO] visualize: Saved confusion matrix: D:\lovely\ml\outputs\model2\readiness_confusion_matrix.png
+2026-07-25 00:43:48,573 [INFO] visualize: Saved ROC curve: D:\lovely\ml\outputs\model2\readiness_roc_curve.png
+2026-07-25 00:43:49,208 [INFO] visualize: Saved Precision-Recall curve: D:\lovely\ml\outputs\model2\readiness_pr_curve.png
+2026-07-25 00:43:49,656 [INFO] visualize: Saved calibration curve: D:\lovely\ml\outputs\model2\readiness_calibration_curve.png
+2026-07-25 00:43:51,005 [INFO] visualize: Saved feature importance plot: D:\lovely\ml\outputs\model2\readiness_feature_importance.png
+2026-07-25 00:43:53,720 [INFO] visualize: Saved correlation heatmap: D:\lovely\ml\outputs\model2\readiness_correlation_heatmap.png
+2026-07-25 00:45:41,567 [INFO] visualize: Saved learning curve: D:\lovely\ml\outputs\model2\readiness_learning_curve.png
+2026-07-25 00:45:42,383 [INFO] explain: Initialized SHAP TreeExplainer.
+2026-07-25 00:45:42,384 [INFO] explain: Computing SHAP values...
+2026-07-25 00:45:43,402 [INFO] explain: Saved SHAP summary plot: D:\lovely\ml\outputs\model2\readiness_shap_summary.png
+2026-07-25 00:45:43,520 [INFO] MasterPipeline: ======================================================================
+2026-07-25 00:45:43,521 [INFO] MasterPipeline:   XGBOOST MODEL 2 PIPELINE SUCCESSFULLY COMPLETED!
+2026-07-25 00:45:43,521 [INFO] MasterPipeline:   Test Accuracy:     0.8164
+2026-07-25 00:45:43,521 [INFO] MasterPipeline:   Test Macro F1:     0.8131
+2026-07-25 00:45:43,521 [INFO] MasterPipeline:   Test ROC-AUC OVR:  0.9475
+2026-07-25 00:45:43,521 [INFO] MasterPipeline:   Pipeline Artifact: D:\lovely\ml\outputs\model2\model2_xgb_pipeline.pkl
+2026-07-25 00:45:43,521 [INFO] MasterPipeline: ======================================================================

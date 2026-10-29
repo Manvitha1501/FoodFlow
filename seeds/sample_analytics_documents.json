@@ -1,0 +1,71 @@
+[
+  {
+    "_id": {
+      "$oid": "66b1c45f702f9d5630c46a10"
+    },
+    "date": "2026-08-05",
+    "day": 5,
+    "week": 32,
+    "month": 8,
+    "year": 2026,
+    "foodSavedKg": 450.0,
+    "mealsDelivered": 1000.0,
+    "co2ReductionKg": 1125.0,
+    "successfulDonations": 18,
+    "cancelledDonations": 2,
+    "successfulPickupCount": 18,
+    "failedPickupCount": 0,
+    "restaurantCount": 12,
+    "ngoCount": 8,
+    "averagePickupTime": 22.5,
+    "averageDeliveryTime": 35.0,
+    "successRate": 90.0,
+    "pickupSuccessRate": 100.0,
+    "version": 1,
+    "createdAt": {
+      "$date": "2026-08-05T00:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-05T16:00:00.000Z"
+    },
+    "_class": "com.foodflow.document.ImpactAnalyticsDocument"
+  },
+  {
+    "_id": {
+      "$oid": "66b1c45f702f9d5630c46a11"
+    },
+    "restaurantId": "66b1a20a702f9d5630c45e10",
+    "restaurantName": "Green Bistro Eco",
+    "totalFoodSavedKg": 250.0,
+    "totalMealsDelivered": 555.5,
+    "totalCO2ReductionKg": 625.0,
+    "totalCompletedDonations": 10,
+    "totalCancelledDonations": 1,
+    "averageDonationSize": 25.0,
+    "successRate": 90.9,
+    "currentTrustScore": 89.8,
+    "lastUpdated": {
+      "$date": "2026-08-05T16:00:00.000Z"
+    },
+    "version": 2,
+    "_class": "com.foodflow.document.RestaurantImpactDocument"
+  },
+  {
+    "_id": {
+      "$oid": "66b1c45f702f9d5630c46a12"
+    },
+    "ngoId": "66b1a20b702f9d5630c45e12",
+    "ngoName": "Care Share Foundation",
+    "totalMealsReceived": 444.4,
+    "totalFoodReceivedKg": 200.0,
+    "totalCompletedPickups": 8,
+    "averagePickupTime": 20.0,
+    "completionRate": 100.0,
+    "currentTrustScore": 91.2,
+    "lastUpdated": {
+      "$date": "2026-08-05T16:00:00.000Z"
+    },
+    "version": 2,
+    "_class": "com.foodflow.document.NGOImpactDocument"
+  }
+]

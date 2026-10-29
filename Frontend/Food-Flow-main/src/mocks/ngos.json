@@ -1,0 +1,107 @@
+[
+  {
+    "id": "NGO-101",
+    "name": "Hope Kitchen Community Shelter",
+    "distanceKm": 3.4,
+    "suitabilityScore": 95,
+    "rank": 1,
+    "storageAvailability": "Chilled & Heated Storage (Cap: 600 meals)",
+    "currentDemand": "High (500 beneficiaries waiting)",
+    "beneficiaryCount": 520,
+    "foodPreferenceMatch": "98% (Hot meals, Rice, Stews)",
+    "trustScore": 98,
+    "pickupAvailability": "Immediate Dispatch (2 Van Fleet ready)",
+    "capacityMax": 600,
+    "capacityCurrent": 120,
+    "rankReasoning": "Top overall suitability: matches hot thermal food requirement, immediate 2-van fleet availability, 98% trust score, and high demand capacity (520 meals needed).",
+    "nearestComparison": {
+      "isNearest": false,
+      "distanceRank": 2,
+      "scoreDiffVsNearest": "+24% higher AI efficiency score than nearest NGO due to thermal storage & instant fleet capability."
+    }
+  },
+  {
+    "id": "NGO-102",
+    "name": "St. Jude Youth & Family Foundation",
+    "distanceKm": 1.1,
+    "suitabilityScore": 71,
+    "rank": 2,
+    "storageAvailability": "Ambient Room Storage Only (Cap: 150 meals)",
+    "currentDemand": "Medium (120 beneficiaries)",
+    "beneficiaryCount": 140,
+    "foodPreferenceMatch": "65% (Dry baked goods, Fruits)",
+    "trustScore": 82,
+    "pickupAvailability": "Delayed (1 Driver available in 45 mins)",
+    "capacityMax": 150,
+    "capacityCurrent": 80,
+    "rankReasoning": "Closest physical distance (1.1 km), but lower AI suitability due to lack of hot thermal holding and lower remaining capacity (only 70 meals capacity left vs 450 ready meals).",
+    "nearestComparison": {
+      "isNearest": true,
+      "distanceRank": 1,
+      "scoreDiffVsNearest": "Nearest physical location (1.1km) but lacks hot holding units for hot catering meals."
+    }
+  },
+  {
+    "id": "NGO-103",
+    "name": "Metropolitan Food Rescuers",
+    "distanceKm": 5.8,
+    "suitabilityScore": 89,
+    "rank": 3,
+    "storageAvailability": "Walk-in Freezer & Cold Storage (Cap: 1200 meals)",
+    "currentDemand": "Very High (850 beneficiaries)",
+    "beneficiaryCount": 850,
+    "foodPreferenceMatch": "92% (All prepared & raw food)",
+    "trustScore": 94,
+    "pickupAvailability": "Ready in 15 mins (3 Electric Cargo Trikes)",
+    "capacityMax": 1200,
+    "capacityCurrent": 300,
+    "rankReasoning": "Very high capacity and trust score, excellent secondary split partner for high-volume donations.",
+    "nearestComparison": {
+      "isNearest": false,
+      "distanceRank": 4,
+      "scoreDiffVsNearest": "Slightly further (5.8km) but massive cold capacity (1200 meals)."
+    }
+  },
+  {
+    "id": "NGO-104",
+    "name": "Sunrise Elderly Care Meal Program",
+    "distanceKm": 4.2,
+    "suitabilityScore": 83,
+    "rank": 4,
+    "storageAvailability": "Heated Containers (Cap: 300 meals)",
+    "currentDemand": "High (280 seniors)",
+    "beneficiaryCount": 280,
+    "foodPreferenceMatch": "90% (Low sodium hot lunches)",
+    "trustScore": 91,
+    "pickupAvailability": "Ready in 20 mins",
+    "capacityMax": 300,
+    "capacityCurrent": 90,
+    "rankReasoning": "Ideal for soft/nutritious hot lunch packages. Excellent punctual pickup record.",
+    "nearestComparison": {
+      "isNearest": false,
+      "distanceRank": 3,
+      "scoreDiffVsNearest": "4.2 km distance, high preference match for cooked lunches."
+    }
+  },
+  {
+    "id": "NGO-105",
+    "name": "Harbor Outreach Center",
+    "distanceKm": 7.5,
+    "suitabilityScore": 64,
+    "rank": 5,
+    "storageAvailability": "Limited Chilled (Cap: 100 meals)",
+    "currentDemand": "Low (60 beneficiaries)",
+    "beneficiaryCount": 60,
+    "foodPreferenceMatch": "70%",
+    "trustScore": 76,
+    "pickupAvailability": "On Request",
+    "capacityMax": 100,
+    "capacityCurrent": 40,
+    "rankReasoning": "Limited remaining quota and further distance radius.",
+    "nearestComparison": {
+      "isNearest": false,
+      "distanceRank": 5,
+      "scoreDiffVsNearest": "Farthest radius and limited capacity."
+    }
+  }
+]

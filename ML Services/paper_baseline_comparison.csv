@@ -1,0 +1,5 @@
+Model Algorithm,Accuracy (%),Precision (%),Recall (%),F1-Score (%),ROC-AUC,Gap vs Baseline
+Logistic Regression,64.2,62.1,60.8,61.44,0.684,Baseline
+Decision Tree (CART),71.8,70.4,69.8,70.1,0.723,+7.60%
+Random Forest,77.42,77.97,76.1,77.02,0.733,+13.22%
+Proposed XGBoost Model,81.17,82.32,96.27,88.75,0.79,+16.97%

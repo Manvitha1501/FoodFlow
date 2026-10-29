@@ -1,0 +1,60 @@
+[
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3f01"
+    },
+    "donationId": "60c72b2f9b1d8b2bad7f3e02",
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "foodType": "COOKED",
+    "preparedTime": {
+      "$date": "2026-07-19T11:00:00Z"
+    },
+    "predictionRequestedAt": {
+      "$date": "2026-07-19T11:30:00Z"
+    },
+    "readinessScore": 91.0,
+    "readinessLevel": "HIGH",
+    "recommendation": "Recommended for Donation",
+    "confidence": 95.0,
+    "remainingFreshnessHours": 6,
+    "predictionReason": "Food stored correctly in refrigerated conditions and prepared recently.",
+    "modelVersion": "1.0.0-mock",
+    "predictionStatus": "COMPLETED",
+    "createdAt": {
+      "$date": "2026-07-19T11:30:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-19T11:30:00Z"
+    },
+    "_class": "com.foodflow.document.DonationPredictionDocument"
+  },
+  {
+    "_id": {
+      "$oid": "60c72b2f9b1d8b2bad7f3f02"
+    },
+    "donationId": "60c72b2f9b1d8b2bad7f3e02",
+    "restaurantId": "60c72b2f9b1d8b2bad7f3d01",
+    "foodType": "COOKED",
+    "preparedTime": {
+      "$date": "2026-07-19T11:00:00Z"
+    },
+    "predictionRequestedAt": {
+      "$date": "2026-07-19T14:00:00Z"
+    },
+    "readinessScore": 58.0,
+    "readinessLevel": "MEDIUM",
+    "recommendation": "Donate with Priority Pickup",
+    "confidence": 88.0,
+    "remainingFreshnessHours": 2,
+    "predictionReason": "Food approaching freshness threshold.",
+    "modelVersion": "1.0.0-mock",
+    "predictionStatus": "COMPLETED",
+    "createdAt": {
+      "$date": "2026-07-19T14:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-19T14:00:00Z"
+    },
+    "_class": "com.foodflow.document.DonationPredictionDocument"
+  }
+]

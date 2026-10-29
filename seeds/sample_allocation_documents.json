@@ -1,0 +1,106 @@
+[
+  {
+    "description": "FULLY_ALLOCATED: Represents an 800 meal donation successfully distributed across three NGOs.",
+    "document": {
+      "donationId": "66afc4b22e1ab5a78efa8001",
+      "restaurantId": "66afc4b22e1ab5a78efa7001",
+      "totalQuantity": 800.0,
+      "quantityUnit": "meals",
+      "remainingQuantity": 0.0,
+      "allocationStatus": "FULLY_ALLOCATED",
+      "allocationAlgorithm": "GREEDY",
+      "generatedAt": "2026-08-04T12:00:00Z",
+      "allocations": [
+        {
+          "ngoId": "66afc4b22e1ab5a78efa6001",
+          "ngoName": "Feed The Hungry NGO A",
+          "matchingScore": 96.0,
+          "allocationRank": 1,
+          "allocatedQuantity": 350.0,
+          "allocatedUnit": "meals",
+          "ngoCapacity": 350.0,
+          "remainingCapacity": 0.0,
+          "estimatedPickupTime": "25 mins",
+          "allocationReason": "Allocated 350.0 meals using Greedy algorithm based on suitability matching rank 1 (Score: 96.0%)"
+        },
+        {
+          "ngoId": "66afc4b22e1ab5a78efa6002",
+          "ngoName": "Hope Shelter NGO B",
+          "matchingScore": 91.0,
+          "allocationRank": 2,
+          "allocatedQuantity": 300.0,
+          "allocatedUnit": "meals",
+          "ngoCapacity": 300.0,
+          "remainingCapacity": 0.0,
+          "estimatedPickupTime": "35 mins",
+          "allocationReason": "Allocated 300.0 meals using Greedy algorithm based on suitability matching rank 2 (Score: 91.0%)"
+        },
+        {
+          "ngoId": "66afc4b22e1ab5a78efa6003",
+          "ngoName": "Care Share NGO C",
+          "matchingScore": 82.0,
+          "allocationRank": 3,
+          "allocatedQuantity": 150.0,
+          "allocatedUnit": "meals",
+          "ngoCapacity": 200.0,
+          "remainingCapacity": 50.0,
+          "estimatedPickupTime": "45 mins",
+          "allocationReason": "Allocated 150.0 meals using Greedy algorithm based on suitability matching rank 3 (Score: 82.0%)"
+        }
+      ]
+    }
+  },
+  {
+    "description": "PARTIALLY_ALLOCATED: Represents an 800 meal donation where the candidate matching pool could only accept 650 meals.",
+    "document": {
+      "donationId": "66afc4b22e1ab5a78efa8001",
+      "restaurantId": "66afc4b22e1ab5a78efa7001",
+      "totalQuantity": 800.0,
+      "quantityUnit": "meals",
+      "remainingQuantity": 150.0,
+      "allocationStatus": "PARTIALLY_ALLOCATED",
+      "allocationAlgorithm": "GREEDY",
+      "generatedAt": "2026-08-04T12:05:00Z",
+      "allocations": [
+        {
+          "ngoId": "66afc4b22e1ab5a78efa6001",
+          "ngoName": "Feed The Hungry NGO A",
+          "matchingScore": 96.0,
+          "allocationRank": 1,
+          "allocatedQuantity": 350.0,
+          "allocatedUnit": "meals",
+          "ngoCapacity": 350.0,
+          "remainingCapacity": 0.0,
+          "estimatedPickupTime": "25 mins",
+          "allocationReason": "Allocated 350.0 meals using Greedy algorithm based on suitability matching rank 1 (Score: 96.0%)"
+        },
+        {
+          "ngoId": "66afc4b22e1ab5a78efa6002",
+          "ngoName": "Hope Shelter NGO B",
+          "matchingScore": 91.0,
+          "allocationRank": 2,
+          "allocatedQuantity": 300.0,
+          "allocatedUnit": "meals",
+          "ngoCapacity": 300.0,
+          "remainingCapacity": 0.0,
+          "estimatedPickupTime": "35 mins",
+          "allocationReason": "Allocated 300.0 meals using Greedy algorithm based on suitability matching rank 2 (Score: 91.0%)"
+        }
+      ]
+    }
+  },
+  {
+    "description": "FAILED: Represents a case where the strategy execution threw an exception (LP Strategy unimplemented).",
+    "document": {
+      "donationId": "66afc4b22e1ab5a78efa8001",
+      "restaurantId": "66afc4b22e1ab5a78efa7001",
+      "totalQuantity": 800.0,
+      "quantityUnit": "meals",
+      "remainingQuantity": 800.0,
+      "allocationStatus": "FAILED",
+      "allocationAlgorithm": "LINEAR_PROGRAMMING",
+      "generatedAt": "2026-08-04T12:10:00Z",
+      "allocations": []
+    }
+  }
+]

@@ -1,0 +1,194 @@
+{
+  "restaurants": [
+    {
+      "id": "RST-01",
+      "name": "Grand Horizon Buffet",
+      "trustScore": 96,
+      "reliabilityLabel": "Highly Reliable",
+      "category": "Hotel & Event Catering",
+      "totalDonationsKg": 4850,
+      "successfulDonationsCount": 128,
+      "cancellationRate": "1.2%",
+      "subMetrics": {
+        "foodAccuracy": 98,
+        "successfulDonations": 96,
+        "cancellationRateScore": 99,
+        "qualityHistory": 94
+      },
+      "trend": [
+        { "month": "Feb", "score": 91 },
+        { "month": "Mar", "score": 92 },
+        { "month": "Apr", "score": 93 },
+        { "month": "May", "score": 95 },
+        { "month": "Jun", "score": 95 },
+        { "month": "Jul", "score": 96 }
+      ]
+    },
+    {
+      "id": "RST-02",
+      "name": "Green Garden Organic Bakery",
+      "trustScore": 91,
+      "reliabilityLabel": "Highly Reliable",
+      "category": "Artisan Bakery",
+      "totalDonationsKg": 2100,
+      "successfulDonationsCount": 74,
+      "cancellationRate": "2.1%",
+      "subMetrics": {
+        "foodAccuracy": 94,
+        "successfulDonations": 92,
+        "cancellationRateScore": 95,
+        "qualityHistory": 89
+      },
+      "trend": [
+        { "month": "Feb", "score": 85 },
+        { "month": "Mar", "score": 87 },
+        { "month": "Apr", "score": 89 },
+        { "month": "May", "score": 90 },
+        { "month": "Jun", "score": 90 },
+        { "month": "Jul", "score": 91 }
+      ]
+    },
+    {
+      "id": "RST-03",
+      "name": "Seafood Bay Grill",
+      "trustScore": 79,
+      "reliabilityLabel": "Reliable",
+      "category": "Seafood Restaurant",
+      "totalDonationsKg": 1650,
+      "successfulDonationsCount": 42,
+      "cancellationRate": "4.8%",
+      "subMetrics": {
+        "foodAccuracy": 81,
+        "successfulDonations": 80,
+        "cancellationRateScore": 78,
+        "qualityHistory": 76
+      },
+      "trend": [
+        { "month": "Feb", "score": 70 },
+        { "month": "Mar", "score": 72 },
+        { "month": "Apr", "score": 75 },
+        { "month": "May", "score": 78 },
+        { "month": "Jun", "score": 77 },
+        { "month": "Jul", "score": 79 }
+      ]
+    },
+    {
+      "id": "RST-04",
+      "name": "City Center Bistro",
+      "trustScore": 58,
+      "reliabilityLabel": "Needs Improvement",
+      "category": "Casual Dining",
+      "totalDonationsKg": 820,
+      "successfulDonationsCount": 19,
+      "cancellationRate": "14.2%",
+      "subMetrics": {
+        "foodAccuracy": 62,
+        "successfulDonations": 55,
+        "cancellationRateScore": 52,
+        "qualityHistory": 61
+      },
+      "trend": [
+        { "month": "Feb", "score": 68 },
+        { "month": "Mar", "score": 65 },
+        { "month": "Apr", "score": 62 },
+        { "month": "May", "score": 60 },
+        { "month": "Jun", "score": 57 },
+        { "month": "Jul", "score": 58 }
+      ]
+    }
+  ],
+  "ngos": [
+    {
+      "id": "NGO-101",
+      "name": "Hope Kitchen Community Shelter",
+      "trustScore": 98,
+      "reliabilityLabel": "Highly Reliable",
+      "beneficiariesServed": 14200,
+      "pickupsCompleted": 310,
+      "avgResponseMin": 4.5,
+      "subMetrics": {
+        "pickupPunctuality": 99,
+        "responseSpeed": 97,
+        "completionRate": 99,
+        "acceptanceHistory": 96
+      },
+      "trend": [
+        { "month": "Feb", "score": 95 },
+        { "month": "Mar", "score": 96 },
+        { "month": "Apr", "score": 97 },
+        { "month": "May", "score": 97 },
+        { "month": "Jun", "score": 98 },
+        { "month": "Jul", "score": 98 }
+      ]
+    },
+    {
+      "id": "NGO-103",
+      "name": "Metropolitan Food Rescuers",
+      "trustScore": 94,
+      "reliabilityLabel": "Highly Reliable",
+      "beneficiariesServed": 28400,
+      "pickupsCompleted": 520,
+      "avgResponseMin": 6.2,
+      "subMetrics": {
+        "pickupPunctuality": 95,
+        "responseSpeed": 93,
+        "completionRate": 96,
+        "acceptanceHistory": 92
+      },
+      "trend": [
+        { "month": "Feb", "score": 90 },
+        { "month": "Mar", "score": 91 },
+        { "month": "Apr", "score": 92 },
+        { "month": "May", "score": 94 },
+        { "month": "Jun", "score": 94 },
+        { "month": "Jul", "score": 94 }
+      ]
+    },
+    {
+      "id": "NGO-104",
+      "name": "Sunrise Elderly Care Meal Program",
+      "trustScore": 91,
+      "reliabilityLabel": "Highly Reliable",
+      "beneficiariesServed": 9800,
+      "pickupsCompleted": 195,
+      "avgResponseMin": 8.0,
+      "subMetrics": {
+        "pickupPunctuality": 92,
+        "responseSpeed": 89,
+        "completionRate": 94,
+        "acceptanceHistory": 90
+      },
+      "trend": [
+        { "month": "Feb", "score": 86 },
+        { "month": "Mar", "score": 88 },
+        { "month": "Apr", "score": 89 },
+        { "month": "May", "score": 90 },
+        { "month": "Jun", "score": 91 },
+        { "month": "Jul", "score": 91 }
+      ]
+    },
+    {
+      "id": "NGO-102",
+      "name": "St. Jude Youth & Family Foundation",
+      "trustScore": 82,
+      "reliabilityLabel": "Reliable",
+      "beneficiariesServed": 5400,
+      "pickupsCompleted": 110,
+      "avgResponseMin": 18.5,
+      "subMetrics": {
+        "pickupPunctuality": 80,
+        "responseSpeed": 78,
+        "completionRate": 85,
+        "acceptanceHistory": 84
+      },
+      "trend": [
+        { "month": "Feb", "score": 84 },
+        { "month": "Mar", "score": 83 },
+        { "month": "Apr", "score": 82 },
+        { "month": "May", "score": 81 },
+        { "month": "Jun", "score": 82 },
+        { "month": "Jul", "score": 82 }
+      ]
+    }
+  ]
+}

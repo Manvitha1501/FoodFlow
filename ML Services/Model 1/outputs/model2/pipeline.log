@@ -1,0 +1,51 @@
+2026-07-30 18:31:28,885 [INFO] MasterPipeline: ======================================================================
+2026-07-30 18:31:28,885 [INFO] MasterPipeline:   STARTING OPTIMIZED XGBOOST MODEL 2 ML PIPELINE
+2026-07-30 18:31:28,886 [INFO] MasterPipeline: ======================================================================
+2026-07-30 18:31:28,886 [INFO] MasterPipeline: Training Data: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\data\donation_readiness_training_data.csv
+2026-07-30 18:31:28,887 [INFO] MasterPipeline: Output Directory: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2
+2026-07-30 18:31:29,141 [INFO] MasterPipeline: Loaded raw dataset: 109,950 rows, 10 columns.
+2026-07-30 18:31:29,142 [INFO] preprocessing: Initial raw dataset shape: (109950, 10)
+2026-07-30 18:31:29,157 [INFO] preprocessing: No missing values found.
+2026-07-30 18:31:29,204 [INFO] preprocessing: No duplicate records found.
+2026-07-30 18:31:29,236 [INFO] preprocessing: Target distribution:
+{'Low': 45423, 'Medium': 44255, 'High': 20272}
+2026-07-30 18:31:29,236 [INFO] preprocessing: Cleaned dataset shape: (109950, 11)
+2026-07-30 18:31:29,236 [INFO] feature_engineering: Computing domain-specific engineered features...
+2026-07-30 18:31:29,309 [INFO] feature_engineering: Engineered 9 domain features.
+2026-07-30 18:31:34,887 [INFO] feature_engineering: Top 10 Mutual Information Scores:
+environmental_spoilage_index    0.340249
+storage_risk_score              0.300626
+temp_humidity_interaction       0.239505
+temperature_c                   0.229784
+donation_confidence_score       0.215481
+freshness_score                 0.134130
+remaining_fridge_life_hours     0.098371
+remaining_fridge_life_pct       0.094666
+food_perishability_score        0.068096
+hours_since_stored              0.049958
+dtype: float64
+2026-07-30 18:31:34,981 [INFO] MasterPipeline: Final feature set (18 features): ['temperature_c', 'humidity_pct', 'co2_ppm', 'light_lux', 'hours_since_stored', 'remaining_fridge_life_pct', 'batch_weight_kg', 'remaining_fridge_life_hours', 'storage_risk_score', 'environmental_spoilage_index', 'temp_humidity_interaction', 'co2_risk_level', 'pickup_urgency', 'food_perishability_score', 'donation_confidence_score', 'freshness_score', 'food_item', 'food_category']
+2026-07-30 18:31:35,042 [INFO] MasterPipeline: Split distribution -> Train: 76,965 | Val: 16,492 | Test: 16,493
+2026-07-30 18:31:35,202 [INFO] train: Evaluating XGBoost Classifier with 5-Fold Stratified CV...
+2026-07-30 18:31:48,546 [INFO] train: [XGBoost] Stratified 5-Fold CV Macro F1: 0.8106 | Accuracy: 0.8142
+2026-07-30 18:31:48,548 [INFO] train: Tuning anti-overfitting hyperparameters for XGBoost...
+2026-07-30 18:33:49,001 [INFO] train: Best tuned XGBoost hyperparams: {'subsample': 0.8, 'reg_lambda': 1.0, 'reg_alpha': 0.1, 'n_estimators': 400, 'min_child_weight': 7, 'max_depth': 5, 'learning_rate': 0.05, 'gamma': 0.2, 'colsample_bytree': 0.75}
+2026-07-30 18:33:58,187 [INFO] evaluate: Evaluation Results -> Accuracy: 0.8176 | Macro F1: 0.8141 | Macro Recall: 0.8276 | ROC-AUC: 0.9478
+2026-07-30 18:33:58,241 [INFO] evaluate: Error Analysis: 3009/16493 samples misclassified (18.24%)
+2026-07-30 18:33:58,679 [INFO] visualize: Saved confusion matrix: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\readiness_confusion_matrix.png
+2026-07-30 18:33:59,049 [INFO] visualize: Saved ROC curve: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\readiness_roc_curve.png
+2026-07-30 18:33:59,299 [INFO] visualize: Saved Precision-Recall curve: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\readiness_pr_curve.png
+2026-07-30 18:33:59,635 [INFO] visualize: Saved calibration curve: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\readiness_calibration_curve.png
+2026-07-30 18:33:59,982 [INFO] visualize: Saved feature importance plot: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\readiness_feature_importance.png
+2026-07-30 18:34:00,796 [INFO] visualize: Saved correlation heatmap: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\readiness_correlation_heatmap.png
+2026-07-30 18:34:51,813 [INFO] visualize: Saved learning curve: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\readiness_learning_curve.png
+2026-07-30 18:34:52,051 [INFO] explain: Initialized SHAP TreeExplainer.
+2026-07-30 18:34:52,052 [INFO] explain: Computing SHAP values...
+2026-07-30 18:34:52,511 [INFO] explain: Saved SHAP summary plot: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\readiness_shap_summary.png
+2026-07-30 18:34:52,531 [INFO] MasterPipeline: ======================================================================
+2026-07-30 18:34:52,531 [INFO] MasterPipeline:   DONATION READINESS XGBOOST PIPELINE COMPLETED!
+2026-07-30 18:34:52,532 [INFO] MasterPipeline:   Test Accuracy:     0.8176
+2026-07-30 18:34:52,532 [INFO] MasterPipeline:   Test Macro F1:     0.8141
+2026-07-30 18:34:52,532 [INFO] MasterPipeline:   Test ROC-AUC OVR:  0.9478
+2026-07-30 18:34:52,532 [INFO] MasterPipeline:   Pipeline Artifact: C:\Users\manvi\Downloads\DonationReadiness\DonationReadiness\outputs\model2\donation_readiness_model.pkl
+2026-07-30 18:34:52,532 [INFO] MasterPipeline: ======================================================================
